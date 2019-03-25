@@ -1,0 +1,33 @@
+<div class="row margin-top">
+  <div class="col-md-12">
+    <div class="panel panel-default articles">
+      <div class="panel-body articles-container">
+        <div class=" margin-top">
+          <div class="row">
+            <div class="col-md-3">
+              <ul class="list-group">
+                <li
+                  class="list-group-item"
+                  *ngFor="let emp of empList"
+                  [ngClass]="{ active: emp.id == empId }"
+                >
+                  <a href="javascript:void(0)" (click)="setEmployee(emp.id)">
+                    {{ emp.firstName + " " + emp.lastName }}</a
+                  >
+                </li>
+                <!-- <li class="list-group-item">Second item</li>
+                <li class="list-group-item">Third item</li> -->
+              </ul>
+            </div>
+            <div class="col-md-9">
+              <app-calendar
+                *ngIf="empId"
+                [calenderUserId]="empId"
+              ></app-calendar>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

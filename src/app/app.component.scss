@@ -1,0 +1,24 @@
+@import url("../assets/css/bootstrap.min.css");
+@import url("../assets/css/styles.css");
+
+@import url("../assets/css/font-awesome.min.css");
+@import url("../assets/css/datepicker3.css");
+.invalid-feedback {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.md-dialog-container {
+  background-color: #000;
+  width: 250px;
+  height: 250px;
+}
+
+.mat-dialog-container {
+  color: #585757;
+  background-color: #ffffff;
+}
+
+.cdk-overlay-pane {
+  width: 55%;
+}

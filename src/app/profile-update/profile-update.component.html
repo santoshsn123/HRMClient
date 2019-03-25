@@ -1,0 +1,81 @@
+<div class="row">
+  <ol class="breadcrumb">
+    <li>
+      <a href="#"> <em class="fa fa-home"></em> </a>
+    </li>
+    <li class="active">Update Profile</li>
+  </ol>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default articles">
+      <div class="panel-heading">
+        Update Profile
+        <ul class="pull-right panel-settings panel-button-tab-right">
+          <li class="dropdown"></li>
+        </ul>
+      </div>
+      <div class="alert bg-success" *ngIf="showsuccessMessage" role="alert">
+        <em class="fa fa-lg fa-warning">&nbsp;</em> {{ showsuccessMessage
+        }}<a
+          href="javascript:void(0);"
+          (click)="closeMessage()"
+          class="pull-right"
+          ><em class="fa fa-lg fa-close"></em
+        ></a>
+      </div>
+      <div class="alert bg-warning" *ngIf="showerrorMessage" role="alert">
+        <em class="fa fa-lg fa-warning">&nbsp;</em> {{ showerrorMessage
+        }}<a
+          href="javascript:void(0);"
+          (click)="closeMessage()"
+          class="pull-right"
+          ><em class="fa fa-lg fa-close"></em
+        ></a>
+      </div>
+      <div class="panel-body articles-container">
+        <form [formGroup]="registerForm" (ngSubmit)="updateProf()">
+          <table class="table">
+            <tr>
+              <td>First Name</td>
+              <td>
+                <input class="form-control" formControlName="firstName" />
+              </td>
+            </tr>
+            <tr>
+              <td>Last Name</td>
+              <td><input class="form-control" formControlName="lastName" /></td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td><input class="form-control" formControlName="email" /></td>
+            </tr>
+            <tr>
+              <td>Phone</td>
+              <td><input class="form-control" formControlName="phone" /></td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td><input class="form-control" formControlName="address" /></td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td>
+                <input
+                  type="submit"
+                  class="btn btn-primary"
+                  (click)="updateProf()"
+                />
+              </td>
+            </tr>
+          </table>
+        </form>
+        <div class="loading_position">
+          <i *ngIf="loading" class="fa fa-refresh fa-spin icon_size"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

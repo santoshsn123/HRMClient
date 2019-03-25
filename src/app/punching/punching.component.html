@@ -1,0 +1,25 @@
+<div class="container margin-top">
+  <div class="row">
+    <div class="col-md-4">
+      <button
+        type="button"
+        (click)="punchIn()"
+        class="btn btn-primary btn-circular"
+        [disabled]="!punchInStat"
+      >
+        In
+      </button>
+    </div>
+    <div class="col-md-4 timeFont">{{ getCurrentTime }}</div>
+    <div class="col-md-4">
+      <button
+        type="button"
+        (click)="punchOut()"
+        class="btn btn-danger btn-circular"
+        [disabled]="!punchOutStat"
+      >
+        Out
+      </button>
+    </div>
+  </div>
+</div>

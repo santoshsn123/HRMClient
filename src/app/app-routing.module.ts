@@ -1,58 +1,59 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { DashboardComponent } from "./dashboard/dashboard.component";
+
+import { UsersComponent } from "./users/users.component";
+import { DetailsComponent } from "./details/details.component";
 import { LoginComponent } from "./login/login.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+
+import { ChangePasswordComponent } from "./change-password/change-password.component";
+
+import { EmpRegisterComponent } from "./emp-register/emp-register.component";
+import { ProfileComponent } from "./profile/profile.component";
+import { ProfileUpdateComponent } from "./profile-update/profile-update.component";
+import { CalendarComponent } from "./calendar/calendar.component";
+import { PreDefLeavesComponent } from "./pre-def-leaves/pre-def-leaves.component";
+import { ApplyLeavesComponent } from "./apply-leaves/apply-leaves.component";
 
 const routes: Routes = [
   {
-    path: "",
+    path: "dashboard",
     component: DashboardComponent
   },
-  // {
-  //   path: "users",
-  //   component: UsersComponent
-  // },
-  // {
-  //   path: "details/:id",
-  //   component: DetailsComponent
-  // },
-  // {
-  //   path: "posts/:id",
-  //   component: PostsComponent
-  // },
-  // {
-  //   path: "giftCard",
-  //   component: GiftCardComponent
-  // },
-  // {
-  //   path: "transactions",
-  //   component: TransationsComponent
-  // },
-  // {
-  //   path: "purchasedCredit",
-  //   component: PurchasedBucksComponent
-  // },
+  {
+    path: "users",
+    component: UsersComponent
+  },
+  {
+    path: "details/:id",
+    component: DetailsComponent
+  },
+
+  {
+    path: "profile",
+    component: ProfileComponent
+  },
+  {
+    path: "updateProfile",
+    component: ProfileUpdateComponent
+  },
   {
     path: "login",
     component: LoginComponent
-  }
-  // {
-  //   path: "changePassword",
-  //   component: ChangePasswordComponent
-  // },
-  // {
-  //   path: "convenienceFees",
-  //   component: ConvenienceFeesComponent
-  // },
-  // {
-  //   path: "convenienceFeesPaid",
-  //   component: ConvenienceFeesPaidComponent
-  // },
-  // {
-  //   path: "achTransfer",
-  //   component: AchTransferComponent
-  // },
-  // { path: "**", component: DashboardComponent }
+  },
+  {
+    path: "changePassword",
+    component: ChangePasswordComponent
+  },
+  {
+    path: "calender",
+    component: CalendarComponent
+  },
+  { path: "allLeaves", component: PreDefLeavesComponent },
+  { path: "leaveApplication", component: ApplyLeavesComponent },
+
+  { path: "empRegisterLink/:linkId", component: EmpRegisterComponent },
+  { path: "**", component: DashboardComponent }
 ];
 
 @NgModule({

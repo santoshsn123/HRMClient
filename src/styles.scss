@@ -1,0 +1,87 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  background: #f2f2f2;
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+}
+.valid-feedback {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 70px auto;
+  height: 100%;
+
+  #content {
+    padding: 30px 50px;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        background: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 8px;
+
+        a {
+          font-size: 1.5em;
+          text-decoration: none;
+          font-weight: bold;
+          color: #00a8ff;
+        }
+
+        ul {
+          margin-top: 20px;
+
+          li {
+            padding: 0;
+
+            a {
+              font-size: 1em;
+              font-weight: 300;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.loading_position {
+  width: 100%;
+  margin: 35px auto;
+  text-align: center;
+}
+
+.icon_size {
+  font-size: 35px !important;
+}
+
+.no-content-class {
+  transform: none;
+  margin: 32px auto;
+  width: 100%;
+  float: left;
+  text-align: center;
+  font-size: 20px;
+  color: #989696;
+}

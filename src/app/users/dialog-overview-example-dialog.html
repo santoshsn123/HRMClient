@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>{{ data.type | titlecase }} Employee</h2>
+<div class="invalid-feedback">{{ errorMessage }}</div>
+<mat-dialog-content class="mat-typography">
+  <div mat-dialog-content>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" *ngIf="!loading">
+      <table class="table">
+        <tr>
+          <td>First Name</td>
+          <td>
+            <input class="form-control" formControlName="firstName" />
+            <div
+              *ngIf="submitted && f.firstName.errors"
+              class="invalid-feedback"
+            >
+              Please Enter First Name
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td>
+            <input class="form-control" formControlName="lastName" />
+            <div
+              *ngIf="submitted && f.lastName.errors"
+              class="invalid-feedback"
+            >
+              Please Enter Last Name
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>
+            <input class="form-control" formControlName="email" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Please Enter Email</div>
+              <div *ngIf="f.email.errors.email">Please Enter Valid Email</div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+    <div *ngIf="loading"><i class="fa fa-refresh fa-spin icon_size"></i></div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="btn btn-primary">Cancel</button>
+  &nbsp;
+  <button
+    mat-button
+    type="submit"
+    (click)="onSubmit()"
+    cdkFocusInitial
+    class="btn btn-primary"
+  >
+    Save
+  </button>
+</mat-dialog-actions>

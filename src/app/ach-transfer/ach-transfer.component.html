@@ -1,0 +1,95 @@
+<div class="row" *ngIf="!dashboardACH">
+  <ol class="breadcrumb">
+    <li>
+      <a href="#"> <em class="fa fa-home"></em> </a>
+    </li>
+    <li class="active">ACH Transfer</li>
+  </ol>
+</div>
+<div class="row" *ngIf="!dashboardACH">
+  <div class="col-lg-12"><h1 class="page-header">ACH Transfer</h1></div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default articles">
+      <div class="panel-heading">
+        {{ dashboardACH ? "Month To Date Payouts" : "ACH Transfer" }}
+        <ul class="pull-right panel-settings panel-button-tab-right">
+          <li class="dropdown">
+            <a
+              class="pull-right dropdown-toggle"
+              data-toggle="dropdown"
+              (click)="transferACH()"
+              title="Generate ACH Transfer"
+            >
+              <em class="fas fa-plus"></em>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="alert bg-success" *ngIf="showsuccessMessage" role="alert">
+        <em class="fa fa-lg fa-warning">&nbsp;</em> {{ showsuccessMessage
+        }}<a
+          href="javascript:void(0);"
+          (click)="closeMessage()"
+          class="pull-right"
+          ><em class="fa fa-lg fa-close"></em
+        ></a>
+      </div>
+      <div class="panel-body articles-container">
+        <table class="table" *ngIf="transactions && !loading; else noBucks">
+          <tr>
+            <td>#</td>
+            <td>Amount</td>
+            <td>No. Of Merchants</td>
+
+            <td>Date</td>
+            <td>Transaction Id</td>
+          </tr>
+          <tr
+            *ngFor="
+              let ach of (transactions
+                | achFilter: { dashboardACH: dashboardACH }
+                | paginate
+                  : {
+                      id: 'achTransfer',
+                      itemsPerPage: itemsPerPage,
+                      currentPage: currentPage
+                    });
+              let i = index
+            "
+          >
+            <td>{{ itemsPerPage * (currentPage - 1) + i + 1 }}</td>
+            <td>{{ ach.amount }}</td>
+            <td>
+              {{ ach.noOfMerchants }}
+            </td>
+
+            <td>{{ ach.createdAt | date: "MM-dd-yyyy" }}</td>
+            <td>
+              <a href="{{ downloadUrl + ach.csvFileUrl }}"
+                ><em class="fas fa-file-excel"></em
+              ></a>
+              /
+              <a href="{{ downloadUrl + ach.nachaFileUrl }}"
+                ><i class="fas fa-file-word"></i
+              ></a>
+            </td>
+          </tr>
+        </table>
+
+        <div class="loading_position">
+          <i *ngIf="loading" class="fa fa-refresh fa-spin icon_size"></i>
+        </div>
+        <ng-template #noBucks>No Transaction Details Available</ng-template>
+        <pagination-controls
+          id="achTransfer"
+          *ngIf="!loading"
+          (pageChange)="currentPage = $event"
+        ></pagination-controls>
+      </div>
+    </div>
+
+    <div class="col-sm-12"></div>
+  </div>
+</div>

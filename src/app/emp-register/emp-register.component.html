@@ -1,0 +1,147 @@
+<div
+  *ngIf="!invalidForm; else invalidData"
+  style="    width: 80%;
+margin: 5% auto;"
+>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        Employee Registration
+        <!-- Transaction Details
+        <span *ngIf="userDetails"
+          >({{ userDetails.firstName + " " + userDetails.lastName }})</span
+        >
+        <h3>{{ userType }}</h3> -->
+      </h1>
+    </div>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <div mat-dialog-content>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" *ngIf="!loading">
+        <table class="table">
+          <tr>
+            <td>First Name</td>
+            <td>
+              <input class="form-control" formControlName="firstName" />
+              <div
+                *ngIf="submitted && f.firstName.errors"
+                class="invalid-feedback"
+              >
+                Please Enter First Name
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Last Name</td>
+            <td>
+              <input class="form-control" formControlName="lastName" />
+              <div
+                *ngIf="submitted && f.lastName.errors"
+                class="invalid-feedback"
+              >
+                Please Enter Last Name
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>
+              <input class="form-control" formControlName="email" disabled />
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Please Enter Email</div>
+                <div *ngIf="f.email.errors.email">Please Enter Valid Email</div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td>
+              <input class="form-control" formControlName="phone" />
+              <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                Please Enter Valid Phone No
+                <!-- <div *ngIf="f.phone.errors.required">Please Enter Phone No</div>
+                <div *ngIf="f.phone.errors.phone">
+                  Please Enter Valid Phone No
+                </div> -->
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>
+              <input class="form-control" formControlName="address" />
+              <div
+                *ngIf="submitted && f.address.errors"
+                class="invalid-feedback"
+              >
+                Please Enter Address
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td>
+              <input
+                class="form-control"
+                type="password"
+                formControlName="password"
+              />
+              <div
+                *ngIf="submitted && f.password.errors"
+                class="invalid-feedback"
+              >
+                Please Enter Password
+              </div>
+              <div
+                *ngIf="submitted && !cpasswordValidation"
+                class="invalid-feedback"
+              >
+                Password Missmatch
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Confirm Password</td>
+            <td>
+              <input
+                type="password"
+                class="form-control"
+                formControlName="cpassword"
+              />
+              <div
+                *ngIf="submitted && f.cpassword.errors"
+                class="invalid-feedback"
+              >
+                Please Enter Confirm Password
+              </div>
+            </td>
+          </tr>
+        </table>
+      </form>
+      <div *ngIf="loading"><i class="fa fa-refresh fa-spin icon_size"></i></div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close class="btn btn-primary">Cancel</button>
+    &nbsp;
+    <button
+      mat-button
+      type="submit"
+      (click)="onSubmit()"
+      cdkFocusInitial
+      class="btn btn-primary"
+    >
+      Save
+    </button>
+  </mat-dialog-actions>
+</div>
+
+<ng-template #invalidData>
+  <div
+    style="    margin: 10% 32%;
+  font-size: 24px;
+  color: #00ff00;"
+  >
+    Registration is successfull
+  </div>
+</ng-template>

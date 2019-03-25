@@ -1,0 +1,100 @@
+<div class="row">
+  <ol class="breadcrumb">
+    <li>
+      <a href="#"> <em class="fa fa-home"></em> </a>
+    </li>
+    <li class="active">Leaves</li>
+  </ol>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default articles">
+      <div class="panel-heading">
+        Leaves Management
+        <ul class="pull-right panel-settings panel-button-tab-right">
+          <li class="dropdown">
+            <a
+              class="pull-right dropdown-toggle"
+              data-toggle="dropdown"
+              (click)="openDialog()"
+            >
+              <em class="fas fa-plus"></em>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="alert bg-success" *ngIf="showsuccessMessage" role="alert">
+        <em class="fa fa-lg fa-warning">&nbsp;</em> {{ showsuccessMessage
+        }}<a
+          href="javascript:void(0);"
+          (click)="closeMessage()"
+          class="pull-right"
+          ><em class="fa fa-lg fa-close"></em
+        ></a>
+      </div>
+      <div class="alert bg-warning" *ngIf="showerrorMessage" role="alert">
+        <em class="fa fa-lg fa-warning">&nbsp;</em> {{ showerrorMessage
+        }}<a
+          href="javascript:void(0);"
+          (click)="closeMessage()"
+          class="pull-right"
+          ><em class="fa fa-lg fa-close"></em
+        ></a>
+      </div>
+      <div class="panel-body articles-container">
+        <table class="table" *ngIf="leavesList && !loading; else noLeaves">
+          <tr>
+            <td>#</td>
+            <td>Leave Date</td>
+            <td>Reason</td>
+            <td>Action</td>
+          </tr>
+          <tr
+            *ngFor="
+              let leave of (leavesList
+                | paginate
+                  : {
+                      id: 'leavePagination',
+                      itemsPerPage: itemsPerPage,
+                      currentPage: currentPage
+                    });
+              let i = index
+            "
+          >
+            <td>{{ itemsPerPage * (currentPage - 1) + i + 1 }}</td>
+            <td>{{ getFormatedDate(leave.leaveDate) }}</td>
+            <td>{{ leave.reason }}</td>
+
+            <td>
+              <a
+                href="javascript:void(0);"
+                title="Edit"
+                (click)="editLeave(leave)"
+                ><em class="fa fa-pencil-square"></em
+              ></a>
+              /
+              <a
+                href="javascript:void(0);"
+                title="Delete"
+                (click)="deleteLeave(leave)"
+                ><em class="fa  fa-trash"></em
+              ></a>
+            </td>
+          </tr>
+        </table>
+
+        <div class="loading_position">
+          <i *ngIf="loading" class="fa fa-refresh fa-spin icon_size"></i>
+        </div>
+        <ng-template #noLeaves> No Leaves Added Yet!!!! </ng-template>
+
+        <pagination-controls
+          id="leavePagination"
+          *ngIf="!loading"
+          (pageChange)="currentPage = $event"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

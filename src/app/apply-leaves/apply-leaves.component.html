@@ -1,0 +1,116 @@
+<div class="row">
+  <ol class="breadcrumb">
+    <li>
+      <a href="#"> <em class="fa fa-home"></em> </a>
+    </li>
+    <li class="active">Apply Leaves</li>
+  </ol>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default articles">
+      <div class="panel-heading">
+        Apply Leaves
+        <ul
+          *ngIf="currentUser.userType == 'employee'"
+          class="pull-right panel-settings panel-button-tab-right"
+        >
+          <li class="dropdown">
+            <a
+              class="pull-right dropdown-toggle"
+              data-toggle="dropdown"
+              (click)="applyLeaves()"
+            >
+              <em class="fas fa-plus"></em>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="alert bg-success" *ngIf="showsuccessMessage" role="alert">
+        <em class="fa fa-lg fa-warning">&nbsp;</em> {{ showsuccessMessage
+        }}<a
+          href="javascript:void(0);"
+          (click)="closeMessage()"
+          class="pull-right"
+          ><em class="fa fa-lg fa-close"></em
+        ></a>
+      </div>
+      <div class="alert bg-warning" *ngIf="showerrorMessage" role="alert">
+        <em class="fa fa-lg fa-warning">&nbsp;</em> {{ showerrorMessage
+        }}<a
+          href="javascript:void(0);"
+          (click)="closeMessage()"
+          class="pull-right"
+          ><em class="fa fa-lg fa-close"></em
+        ></a>
+      </div>
+      <div class="panel-body articles-container">
+        <table class="table" *ngIf="leaveList && !loading; else noLeaves">
+          <tr>
+            <td>#</td>
+            <td>Leave Date</td>
+            <td *ngIf="currentUser.userType == 'admin'">Application From</td>
+            <td>Reason</td>
+            <td>Status</td>
+            <td *ngIf="currentUser.userType == 'admin'">Action</td>
+          </tr>
+          <tr
+            *ngFor="
+              let leave of (leaveList
+                | paginate
+                  : {
+                      id: 'leavePagination',
+                      itemsPerPage: itemsPerPage,
+                      currentPage: currentPage
+                    });
+              let i = index
+            "
+          >
+            <td>{{ itemsPerPage * (currentPage - 1) + i + 1 }}</td>
+            <td>{{ getFormatedDate(leave.leaveDate) }}</td>
+            <td *ngIf="currentUser.userType == 'admin'">
+              {{ leave.Employee.firstName + " " + leave.Employee.lastName }}
+            </td>
+            <td>{{ leave.reason }}</td>
+
+            <td>
+              {{
+                leave.status === 1
+                  ? "Approved"
+                  : leave.status === 2
+                  ? "Rejected"
+                  : "Waiting"
+              }}
+            </td>
+            <td *ngIf="currentUser.userType == 'admin'">
+              <a
+                href="javascript:void(0);"
+                *ngIf="leave.status !== 1"
+                (click)="changeStatus(leave, 'accept')"
+                >Accept </a
+              ><span *ngIf="leave.status === 0">/</span>
+              <a
+                href="javascript:void(0);"
+                *ngIf="leave.status !== 2"
+                (click)="changeStatus(leave, 'reject')"
+                >Reject
+              </a>
+            </td>
+          </tr>
+        </table>
+
+        <div class="loading_position">
+          <i *ngIf="loading" class="fa fa-refresh fa-spin icon_size"></i>
+        </div>
+        <ng-template #noLeaves> No Leaves Applied!!!! </ng-template>
+
+        <pagination-controls
+          id="leavePagination"
+          *ngIf="!loading"
+          (pageChange)="currentPage = $event"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

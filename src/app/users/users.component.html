@@ -1,0 +1,141 @@
+<div class="row" *ngIf="!dashboardData">
+  <ol class="breadcrumb">
+    <li>
+      <a href="#"> <em class="fa fa-home"></em> </a>
+    </li>
+    <li class="active">Employees</li>
+  </ol>
+</div>
+<!-- <div class="row" *ngIf="!dashboardData">
+  <div class="col-md-offset-3 col-md-6 ">
+    <form class="example-form">
+      <label for="userType"> Select User Type</label>
+      <select
+        name="userType"
+        id="userType"
+        [(ngModel)]="userType"
+        class="form-control"
+      >
+        <option value=""> All</option>
+        <option value="admin"> Admin</option>
+        <option value="user"> User</option>
+        <option value="merchant"> Merchant</option>
+      </select>
+      <br />
+    </form>
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default articles">
+      <div class="panel-heading">
+        Employee Management
+        <ul class="pull-right panel-settings panel-button-tab-right">
+          <li class="dropdown">
+            <a
+              class="pull-right dropdown-toggle"
+              data-toggle="dropdown"
+              (click)="openDialog()"
+            >
+              <em class="fas fa-plus"></em>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="alert bg-success" *ngIf="showsuccessMessage" role="alert">
+        <em class="fa fa-lg fa-warning">&nbsp;</em> {{ showsuccessMessage
+        }}<a
+          href="javascript:void(0);"
+          (click)="closeMessage()"
+          class="pull-right"
+          ><em class="fa fa-lg fa-close"></em
+        ></a>
+      </div>
+      <div class="alert bg-warning" *ngIf="showerrorMessage" role="alert">
+        <em class="fa fa-lg fa-warning">&nbsp;</em> {{ showerrorMessage
+        }}<a
+          href="javascript:void(0);"
+          (click)="closeMessage()"
+          class="pull-right"
+          ><em class="fa fa-lg fa-close"></em
+        ></a>
+      </div>
+      <div class="panel-body articles-container">
+        <table class="table" *ngIf="users && !loading; else noUsers">
+          <tr>
+            <td>#</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Active Status</td>
+            <td>Phone</td>
+
+            <td>Action</td>
+          </tr>
+          <tr
+            *ngFor="
+              let user of (users
+                | userFilter
+                  : { type: this.userType, activeInactiveStatus: activestatus }
+                | paginate
+                  : {
+                      id: 'user_id',
+                      itemsPerPage: itemsPerPage,
+                      currentPage: currentPage
+                    });
+              let i = index
+            "
+          >
+            <td>{{ itemsPerPage * (currentPage - 1) + i + 1 }}</td>
+            <td>{{ user.firstName + " " + user.lastName }}</td>
+            <td>{{ user.email }}</td>
+
+            <td>
+              <a href="javascript:void(0);" (click)="ActiveInactive(user)"
+                ><span *ngIf="user.isActive">Active</span>
+                <span *ngIf="!user.isActive">InActive</span></a
+              >
+            </td>
+            <td>{{ user.phone }}</td>
+
+            <td>
+              <a
+                href="javascript:void(0);"
+                title="Edit"
+                (click)="editUser(user)"
+                ><em class="fa fa-pencil-square"></em
+              ></a>
+              /
+              <a
+                href="javascript:void(0);"
+                title="Delete"
+                (click)="deleteUser(user)"
+                ><em class="fa  fa-trash"></em
+              ></a>
+              <span *ngIf="user.isRegistered === false">
+                /
+                <a
+                  href="javascript:void(0);"
+                  title="View Transactions"
+                  routerLink="../empRegisterLink/{{ user.linkCode }}"
+                  ><em class="fa  fa-eye"></em
+                ></a>
+              </span>
+            </td>
+          </tr>
+        </table>
+
+        <div class="loading_position">
+          <i *ngIf="loading" class="fa fa-refresh fa-spin icon_size"></i>
+        </div>
+        <ng-template #noUsers> No Transactions Available </ng-template>
+
+        <pagination-controls
+          id="user_id"
+          *ngIf="!loading"
+          (pageChange)="currentPage = $event"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

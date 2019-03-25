@@ -1,3 +1,12 @@
-<p>
-  dashboard works!
-</p>
+<app-punching *ngIf="currentUser.userType == 'employee'"></app-punching>
+
+<div class="margin-top">
+  <app-calendar
+    *ngIf="currentUser.userType == 'employee'"
+    [calenderUserId]="UserId"
+  ></app-calendar>
+</div>
+
+<app-users-calender
+  *ngIf="currentUser.userType == 'admin'"
+></app-users-calender>

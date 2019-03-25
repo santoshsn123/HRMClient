@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>Generate ACH Transfer</h2>
+
+<div class="valid-feedback">{{ successMessage }}</div>
+<mat-dialog-content class="mat-typography">
+  <div mat-dialog-content>
+    <i *ngIf="loading" class="fa fa-refresh fa-spin icon_size"></i>
+    <div *ngIf="totalUsers.length && !loading; else showerror">
+      {{ totalUsers.length }} Merchants have to be paid now<br />
+      <span *ngIf="invalidUsers.length == 0; else showInvalidUsers"
+        >do you want to proceed to pay now ?</span
+      ><br /><br />
+
+      <ng-template #showInvalidUsers>
+        <span class="invalid-feedback"
+          >Below Users have issues in routing number, you need to fix this
+          issues before proceding</span
+        >
+        <table class="table">
+          <tr>
+            <td>Merchant Name</td>
+            <td>Merchant Email</td>
+            <td>Routing Number</td>
+          </tr>
+          <tr *ngFor="let user of invalidUsers">
+            <td>{{ user.user.firstName + " " + user.user.lastName }}</td>
+            <td>{{ user.user.email }}</td>
+            <td class="invalid-feedback">{{ user.bankRoutingNo }}</td>
+          </tr>
+        </table>
+      </ng-template>
+    </div>
+    <ng-template #showerror>
+      <span *ngIf="!loading"
+        >No Merchants have bucks in their account to be paid.</span
+      >
+    </ng-template>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="btn btn-primary">
+    {{ invalidUsers.length ? "Okay" : "Cancel" }}
+  </button>
+  &nbsp;
+  <button
+    mat-button
+    type="submit"
+    (click)="onSubmit()"
+    cdkFocusInitial
+    class="btn btn-primary"
+    *ngIf="totalUsers.length && !loading && !invalidUsers.length"
+  >
+    Proceed To Pay
+  </button>
+</mat-dialog-actions>

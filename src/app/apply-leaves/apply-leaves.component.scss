@@ -1,0 +1,50 @@
+@import url("../../assets/css/bootstrap.min.css");
+@import url("../../assets/css/styles.css");
+
+@import url("../../assets/css/font-awesome.min.css");
+@import url("../../assets/css/datepicker3.css");
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+  border: solid 1px #ccc;
+}
+
+.calendar-box {
+  border: solid 1px #ccc;
+  padding-left: 8%;
+  font-size: 20px;
+}
+
+.preClass {
+  width: 50%;
+  float: left;
+}
+
+.nextClass {
+  width: 50%;
+  float: right;
+}
+
+.showday {
+  margin: 15%;
+}
+.timings {
+  font-size: 10px;
+}
+
+.timeFont {
+  text-align: center;
+  font-size: 18px;
+}
+.margin-top {
+  margin-top: 50px;
+}
+.leaveClass {
+  background-color: #84de748c;
+}
+
+.sundayClass {
+  background-color: #ff00005e;
+}

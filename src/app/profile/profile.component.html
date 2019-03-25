@@ -1,0 +1,102 @@
+<!-- <table class="table" *ngIf="users && !loading; else noUsers">
+  <tr>
+    <td>Name</td>
+    <td>{{ profileData.firstName + " " + profileData.lastName }}</td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td>{{ profileData.email }}</td>
+  </tr>
+  <tr>
+    <td>Phone</td>
+    <td>{{ profileData.phone }}</td>
+  </tr>
+  <tr>
+    <td>Address</td>
+    <td>{{ profileData.address }}</td>
+  </tr>
+  <tr>
+    <td>Joining Date</td>
+    <td>{{ profileData.createdAt }}</td>
+  </tr>
+  <tr>
+    <td>Edit</td>
+    <td></td>
+  </tr>
+</table> -->
+
+<div class="row">
+  <ol class="breadcrumb">
+    <li>
+      <a href="#"> <em class="fa fa-home"></em> </a>
+    </li>
+    <li class="active">Profile</li>
+  </ol>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default articles">
+      <div class="panel-heading">
+        Profile
+        <ul class="pull-right panel-settings panel-button-tab-right">
+          <li class="dropdown"></li>
+        </ul>
+      </div>
+      <div class="alert bg-success" *ngIf="showsuccessMessage" role="alert">
+        <em class="fa fa-lg fa-warning">&nbsp;</em> {{ showsuccessMessage
+        }}<a
+          href="javascript:void(0);"
+          (click)="closeMessage()"
+          class="pull-right"
+          ><em class="fa fa-lg fa-close"></em
+        ></a>
+      </div>
+      <div class="alert bg-warning" *ngIf="showerrorMessage" role="alert">
+        <em class="fa fa-lg fa-warning">&nbsp;</em> {{ showerrorMessage
+        }}<a
+          href="javascript:void(0);"
+          (click)="closeMessage()"
+          class="pull-right"
+          ><em class="fa fa-lg fa-close"></em
+        ></a>
+      </div>
+      <div class="panel-body articles-container">
+        <table class="table">
+          <tr>
+            <td>Name</td>
+            <td>{{ profileData.firstName + " " + profileData.lastName }}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{{ profileData.email }}</td>
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td>{{ profileData.phone }}</td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>{{ profileData.address }}</td>
+          </tr>
+          <tr>
+            <td>Joining Date</td>
+            <td>{{ profileData.createdAt }}</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="javascript:void(0);" routerLink="../updateProfile"
+                >Edit</a
+              >
+            </td>
+            <td></td>
+          </tr>
+        </table>
+
+        <div class="loading_position">
+          <i *ngIf="loading" class="fa fa-refresh fa-spin icon_size"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

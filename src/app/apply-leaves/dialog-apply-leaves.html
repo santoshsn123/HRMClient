@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>Create Leaves</h2>
+<mat-dialog-content class="mat-typography">
+  <div mat-dialog-content>
+    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <table class="table">
+        <tr>
+          <td>Select Date to apply</td>
+          <td>
+            <mat-form-field>
+              <input
+                matInput
+                [matDatepicker]="leaveDate"
+                placeholder="Leave Date"
+                name="leaveDate"
+                formControlName="leaveDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="leaveDate"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #leaveDate></mat-datepicker>
+            </mat-form-field>
+            <span *ngIf="f.leaveDate.errors" class="invalid-feedback">
+              Please Select Date
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>Reason</td>
+          <td>
+            <input
+              class="form-control"
+              name="reason"
+              type="reason"
+              formControlName="reason"
+            />
+            <br />
+            <span *ngIf="f.reason.errors" class="invalid-feedback">
+              {{ amountError }}</span
+            >
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="btn btn-primary">Cancel</button>
+  &nbsp;
+  <button
+    mat-button
+    type="submit"
+    (click)="onSubmit()"
+    cdkFocusInitial
+    class="btn btn-primary"
+  >
+    Save
+  </button>
+</mat-dialog-actions>
