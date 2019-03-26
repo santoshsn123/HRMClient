@@ -1,0 +1,14 @@
+>ng s -o	//Angular Live Development Server on http://localhost:4200/
+
+I am writting commands here again for your future reference .
+
+
+git status //to check the status of files.
+
+git add .
+
+git commit -m "Message"
+
+git push origin (Branch Name)  //For Now Branch Name is feature/nareshWork
+
+

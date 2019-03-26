@@ -7,7 +7,64 @@
 .margin-top {
   margin-top: 50px;
 }
+.employee_list {
+  border: 1px solid #eee;
 
+  &-title {
+    padding: 10px 15px !important;
+    background-color: #1c5383;
+    h4 {
+      font-weight: 500;
+      color: #fff;
+    }
+  }
+  img {
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+  }
+  li {
+    padding: 0;
+    border: 0;
+    margin-bottom: 0;
+    position: relative;
+    
+    &:last-child{
+      border-radius: 0 !important;
+    }
+    &:not(:first-child):not(:last-child) {
+      border-bottom: 1px solid #eee;
+    }
+    &.active {
+      background-color: #3b8dd4;
+
+      &:before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 27px solid transparent;
+        border-left: 10px solid #3b8dd4;
+        border-bottom: 27px solid transparent;
+        right: -10px;
+      }
+
+      a {
+        color: #fff;
+      }
+    }
+
+    a {
+      width: 100%;
+      display: block;
+      padding: 10px 15px;
+    }
+    a:hover,
+    a:active {
+      text-decoration: none;
+    }
+  }
+}
 .emp_total {
   margin-bottom: 50px;
   &-container {
