@@ -1,0 +1,36 @@
+Okay so setup done.
+
+Login Details :  (Admin Panle)
+username : santosh.narawade1@gmail.com
+password : santoshs
+
+
+Login Details : (Employee Panel)
+
+Email : shubham@gmail.com
+Password : shubhamb
+
+
+Folder structure is nested. But you will get module wise folders inside, src/app/foldername
+
+you dont need to find anything outside of it.
+
+every module have an html file and scss file parallel to each other.
+
+
+So do you have any questions before we close this teamviewear session ?
+
+I understood
+no questions for now
+.
+
+
+Thats Great.
+Lets close session for now, Please feel free to ping me on skype if you need anything from my side.
+
+Thank you Naresh. Bye for now.
+
+thank you bye
+
+
+http://familyoffices-asia.org/

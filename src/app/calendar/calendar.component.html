@@ -5,13 +5,15 @@
         <div class="">
           <div class="row">
             <div class="col-md-4">
-              <a href="javascript:void(0);" (click)="prevMonth()"><< Prev</a>
+              <a href="javascript:void(0);" (click)="prevMonth()" class="calender_controls"><i class="fas fa-angle-left"></i>
+              </a>
             </div>
             <div class="col-md-4 timeFont">
               {{ months[date.getMonth()] }} - {{ date.getFullYear() }}
             </div>
             <div class="col-md-4" style="text-align: right">
-              <a href="javascript:void(0);" (click)="nextMonth()">Next >></a>
+              <a href="javascript:void(0);" (click)="nextMonth()" class="calender_controls"><i class="fas fa-angle-right"></i>
+              </a>
             </div>
           </div>
           <div class="wrapper">
