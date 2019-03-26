@@ -4,17 +4,39 @@
 @import url("../../assets/css/font-awesome.min.css");
 @import url("../../assets/css/datepicker3.css");
 
+.panel.panel-default.articles {
+  box-shadow: none;
+
+  .timeFont {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  .calender_controls {
+    padding: 0px 20px;
+    background-color: turquoise;
+    color: #fff;
+    font-size: 28px;
+  }
+  .sundayClass {
+    background-color: #ff002466;
+  }
+  .panel-body {
+    padding: 15px 0;
+  }
+}
 .wrapper {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-gap: 10px;
-  border: solid 1px #ccc;
+  // grid-gap: 10px;
+  border-left: solid 1px #eee;
+  border-top: solid 1px #eee;
 }
 
 .calendar-box {
-  border: solid 1px #ccc;
-  padding-left: 8%;
+  border-right: solid 1px #eee;
+  padding: 10px 0 10px 8%;
   font-size: 20px;
+  border-bottom: solid 1px #eee;
 }
 
 .preClass {
