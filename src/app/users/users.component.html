@@ -69,14 +69,13 @@
             <td>Email</td>
             <td>Active Status</td>
             <td>Phone</td>
+            <td>Salary</td>
 
             <td>Action</td>
           </tr>
           <tr
             *ngFor="
               let user of (users
-                | userFilter
-                  : { type: this.userType, activeInactiveStatus: activestatus }
                 | paginate
                   : {
                       id: 'user_id',
@@ -97,6 +96,7 @@
               >
             </td>
             <td>{{ user.phone }}</td>
+            <td>{{ user.salary | currency: "₹":0 }}</td>
 
             <td>
               <a

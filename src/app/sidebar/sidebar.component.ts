@@ -19,8 +19,7 @@ export class SidebarComponent implements OnInit {
     private data: DataService,
     private userData: UsersService
   ) {
-    let user = localStorage.getItem("user");
-    this.user = JSON.parse(user);
+    let user = JSON.parse(localStorage.getItem("user"));
     if (!user && router.url != "/login") {
       this.router.navigate(["login"]);
     }

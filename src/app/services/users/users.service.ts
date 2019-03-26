@@ -30,6 +30,10 @@ export class UsersService {
     return this.http.put(this.baseUrl + "/admin/users/" + id, Object);
   }
 
+  updateUserByAdmin(Object, id) {
+    return this.http.put(this.baseUrl + "/admin/usersByAdmin/" + id, Object);
+  }
+
   deleteUser(id) {
     return this.http.delete(this.baseUrl + "/admin/users/" + id);
   }
