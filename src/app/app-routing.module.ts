@@ -14,6 +14,7 @@ import { ProfileUpdateComponent } from "./profile-update/profile-update.componen
 import { CalendarComponent } from "./calendar/calendar.component";
 import { PreDefLeavesComponent } from "./pre-def-leaves/pre-def-leaves.component";
 import { ApplyLeavesComponent } from "./apply-leaves/apply-leaves.component";
+import { ForgetPasswordComponent } from "./forget-password/forget-password.component";
 
 const routes: Routes = [
   {
@@ -51,7 +52,8 @@ const routes: Routes = [
   },
   { path: "allLeaves", component: PreDefLeavesComponent },
   { path: "leaveApplication", component: ApplyLeavesComponent },
-
+  { path: "forgetPassword", component: ForgetPasswordComponent },
+  { path: "forgetPassword/:id", component: ForgetPasswordComponent },
   { path: "empRegisterLink/:linkId", component: EmpRegisterComponent },
   { path: "**", component: DashboardComponent }
 ];

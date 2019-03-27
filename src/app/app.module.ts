@@ -76,6 +76,7 @@ import {
   ApplyLeavesComponent,
   applyLeave
 } from "./apply-leaves/apply-leaves.component";
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +112,8 @@ import {
     ProfileUpdateComponent,
     UsersCalenderComponent,
     PreDefLeavesComponent,
-    ApplyLeavesComponent
+    ApplyLeavesComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

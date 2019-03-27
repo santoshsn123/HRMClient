@@ -16,8 +16,10 @@ export class AppComponent {
         let currentUser = JSON.parse(localStorage.getItem("user"));
         if (
           event.url != "/login" &&
+          event.url != "/forgetPassword" &&
           !currentUser &&
-          event.url.split("/")[1] !== "empRegisterLink"
+          event.url.split("/")[1] !== "empRegisterLink" &&
+          event.url.split("/")[1] !== "forgetPassword"
         ) {
           this.router.navigate(["login"]);
         }
