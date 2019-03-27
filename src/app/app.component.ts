@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, NavigationStart } from "@angular/router";
 import { DataService } from "./data.service";
 
 @Component({
@@ -10,11 +10,31 @@ import { DataService } from "./data.service";
 export class AppComponent {
   title = "cashless-admin";
   showSideBar: boolean = true;
-  constructor(private router: Router, private userstate: DataService) {}
+  constructor(private router: Router, private userstate: DataService) {
+    router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        let currentUser = JSON.parse(localStorage.getItem("user"));
+        if (
+          event.url != "/login" &&
+          !currentUser &&
+          event.url.split("/")[1] !== "empRegisterLink"
+        ) {
+          this.router.navigate(["login"]);
+        }
+
+        if (event.url == "/login" && currentUser) {
+          this.router.navigate(["dashboard"]);
+        }
+      }
+      // NavigationEnd
+      // NavigationCancel
+      // NavigationError
+      // RoutesRecognized
+    });
+  }
 
   ngOnInit() {
     let currentUser = JSON.parse(localStorage.getItem("user"));
-    // console.log(currentUser);
     this.userstate.getLoginState().subscribe(state => {
       this.showSideBar = state.login;
     });

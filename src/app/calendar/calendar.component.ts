@@ -65,7 +65,7 @@ export class CalendarComponent implements OnInit {
     let firstdayoftheweek = firstDate.getDay();
     var lastDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     this.monthArray = this.createArrayofNumber(lastDate.getDate());
-    this.preBlanks = this.createArrayofNumber(firstdayoftheweek - 1);
+    this.preBlanks = this.createArrayofNumber(firstdayoftheweek);
     this.lastBlanks = lastDate.getDay()
       ? this.createArrayofNumber(7 - lastDate.getDay())
       : [];
