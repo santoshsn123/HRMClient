@@ -1502,3 +1502,18 @@ p.back-link {
   font-size: 12px;
   text-transform: uppercase;
 }
+
+
+/*------------------- new style -------------------*/
+.sidebar_toggle{
+  float: left;
+color: #fff;
+font-size: 22px;
+padding: 5px 8px;
+border-radius: 5px;
+border: 1px solid rgba(256,256,256,0.2);
+line-height: 0;
+margin: 13px 0;
+cursor: pointer;
+}
+.header_logo{ margin-left: 8px; }
