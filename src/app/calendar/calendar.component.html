@@ -34,7 +34,7 @@
               }"
             >
               <div class="showday">{{ day.day }}</div>
-              <div *ngIf="day.data">
+              <div *ngIf="day.data" class="day_tooltip">
                 <span class="timings"
                   >Start Time : {{ day.data.formatedStartTime }}</span
                 >

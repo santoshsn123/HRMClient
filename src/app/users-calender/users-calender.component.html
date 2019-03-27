@@ -5,9 +5,11 @@
         <div class=" margin-top">
           <div class="row">
             <div class="col-md-3">
-              <ul class="list-group">
+              <ul class="list-group employee_list">
+                <li class="list-group-item employee_list-title"><h4>Employees</h4></li>
                 <li class="list-group-item" *ngFor="let emp of empList" [ngClass]="{ active: emp.id == empId }">
                   <a href="javascript:void(0)" (click)="setEmployee(emp.id)">
+                    <img src="../../assets/img/Ben.png" class="img-circle" alt="">
                     {{ emp.firstName + " " + emp.lastName }}</a>
                 </li>
                 <!-- <li class="list-group-item">Second item</li>
