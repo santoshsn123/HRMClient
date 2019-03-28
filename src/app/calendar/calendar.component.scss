@@ -33,6 +33,7 @@ padding: 10px 20px;
 width: 220px;
 transition: all 0.3s;
 display: none;
+color: #000000;
 }
 .day_tooltip::before{
   content: '';
@@ -84,10 +85,20 @@ bottom: -10px;
 .margin-top {
   margin-top: 50px;
 }
-.leaveClass {
-  background-color: #84de748c;
+.leaveClass, .notifyClass {
+  background-color: #fcb03b;
+  color: #fff;
 }
 
 .sundayClass {
-  background-color: #ff00005e;
+  background-color: #aaaaaa !important;
+  color: #fff;
+}
+.presentClass{
+  background-color: #21b95eb3;
+  color: #fff;
+}
+.absentClass{
+  background-color: #db4b4be6;
+  color: #fff;
 }
