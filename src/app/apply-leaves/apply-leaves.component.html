@@ -3,7 +3,10 @@
     <li>
       <a href="#"> <em class="fa fa-home"></em> </a>
     </li>
-    <li class="active">Apply Leaves</li>
+    <li class="active">
+      <span *ngIf="currentUser.userType == 'employee'">Apply Leaves</span>
+      <span *ngIf="currentUser.userType == 'admin'">Applied Leaves</span>
+    </li>
   </ol>
 </div>
 
@@ -11,7 +14,12 @@
   <div class="col-md-12">
     <div class="panel panel-default articles">
       <div class="panel-heading">
-        Apply Leaves
+        <span *ngIf="currentUser.userType == 'employee'" class="panel-heading"
+          >Apply Leaves</span
+        >
+        <span *ngIf="currentUser.userType == 'admin'" class="panel-heading"
+          >Applied Leaves</span
+        >
         <ul
           *ngIf="currentUser.userType == 'employee'"
           class="pull-right panel-settings panel-button-tab-right"
