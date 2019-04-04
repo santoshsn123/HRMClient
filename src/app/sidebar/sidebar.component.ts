@@ -55,3 +55,9 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(["login"]);
   }
 }
+
+function sidebar_toggle($event){
+  
+	var element = document.getElementById("sidebar-collapse");
+  element.classList.toggle("sidebar_collapsed");
+}

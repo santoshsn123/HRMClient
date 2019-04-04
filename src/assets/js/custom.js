@@ -29,9 +29,3 @@ $(document).on('click', '.panel-heading span.clickable', function(e){
 	}
 })
 
-$(document).ready(function(){
-	$(".sidebar_toggle").click(function(){
-		alert();
-		$("#sidebar-collapse").toggleClass("active");
-	});
-});

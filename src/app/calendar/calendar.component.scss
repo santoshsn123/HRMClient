@@ -13,18 +13,18 @@
   }
   .calender_controls {
     padding: 0px 20px;
-    background-color: turquoise;
-    color: #fff;
+    // background-color: turquoise;
+    // color: #fff;
     font-size: 28px;
   }
   .calender_controls:hover{
-    background-color: #4cefde;
+    color: #729ab9;
   }
   .sundayClass {
     background-color: #ff002466;
   }
   .panel-body {
-    padding: 15px 0;
+    padding: 15px 0 0;
   }
 }
 .calendar-box:hover .day_tooltip{ display: block; }
