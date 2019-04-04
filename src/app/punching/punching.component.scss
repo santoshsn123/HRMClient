@@ -9,9 +9,29 @@
 .timeFont {
   font-size: 36px;
   top: 25px;
+  text-align: center;
+  z-index: 5;
+  width: 100%;
+  position: absolute;
 }
 .btn-circular {
   width: 100px;
   border-radius: 55%;
   height: 100px;
+}
+.punch_container {
+  width: 60%;
+  position: relative;
+  display: table;
+  margin:30px auto 0;
+}
+.punch_in {
+  float: left;
+  position: relative;
+  z-index: 9;
+}
+.punch_out {
+  float: right;
+  position: relative;
+  z-index: 9;
 }
