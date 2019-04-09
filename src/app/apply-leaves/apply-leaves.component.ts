@@ -18,6 +18,7 @@ export class ApplyLeavesComponent implements OnInit {
   currentPage: number = 1;
   loading = false;
   showerrorMessage;
+  noLeaves;
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user"));
     this.currentUser.userType === "employee"

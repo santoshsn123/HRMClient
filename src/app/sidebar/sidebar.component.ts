@@ -55,8 +55,8 @@ export class SidebarComponent implements OnInit {
   }
 }
 
-function sidebar_toggle($event){
-  
-	var element = document.getElementById("sidebar-collapse");
-  element.classList.toggle("sidebar_collapsed");
-}
+// function sidebar_toggle($event){
+
+// 	var element = document.getElementById("sidebar-collapse");
+//   element.classList.toggle("sidebar_collapsed");
+// }
