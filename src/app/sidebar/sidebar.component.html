@@ -14,7 +14,7 @@
       <div class="sidebar_toggle" (click)="sidebar_toggle($event)">
         <i class="fas fa-bars"></i>
       </div>
-      
+
       <ul class="nav navbar-top-links navbar-right">
         <li class="dropdown">
           <a
@@ -119,12 +119,12 @@
   <!-- /.container-fluid -->
 </nav>
 <div id="sidebar-collapse" class="sidebar">
-    <a class="header_logo" href="#" routerLink="dashboard">
-        <img
-          style="margin: 7px;"
-          src="http://entitledarts.com/entitle-new/wp-content/uploads/2019/04/side-menu-logo.png"
-        />
-      </a>
+  <a class="header_logo" href="#" routerLink="dashboard">
+    <img
+      style="margin: 7px;"
+      src="http://entitledarts.com/entitle-new/wp-content/uploads/2019/04/side-menu-logo.png"
+    />
+  </a>
   <div class="profile-sidebar">
     <!--
       <div class="profile-userpic">
@@ -136,7 +136,9 @@
       </div>
     -->
     <div class="profile-usertitle">
-      <div class="profile-usertitle-name">{{ currentUser.firstName }}</div>
+      <div class="profile-usertitle-name">
+        {{ currentUser.firstName }}
+      </div>
       <div class="profile-usertitle-status">
         <!-- <span class="indicator label-success"></span>Online -->
       </div>

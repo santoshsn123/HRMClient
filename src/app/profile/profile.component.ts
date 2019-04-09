@@ -24,11 +24,10 @@ export class ProfileComponent implements OnInit {
   getprofiledata = () => {
     this.user.getSingleUser(this.UserId).subscribe(data => {
       this.profileData = data;
-
-      // this.profileData.createdAt = this.getFormatedDate(
-      //   this.profileData.createdAt,
-      //   ""
-      // );
+      this.profileData.createdAt = this.getFormatedDate(
+        this.profileData.createdAt,
+        ""
+      );
       console.log(data);
     });
   };

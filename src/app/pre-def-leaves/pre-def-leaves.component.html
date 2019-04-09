@@ -87,7 +87,9 @@
         <div class="loading_position">
           <i *ngIf="loading" class="fa fa-refresh fa-spin icon_size"></i>
         </div>
-        <ng-template #noLeaves> No Leaves Added Yet!!!! </ng-template>
+        <ng-template *ngIf="!loading" #noLeaves>
+          No Leaves Added Yet!!!!
+        </ng-template>
 
         <pagination-controls
           id="leavePagination"

@@ -25,7 +25,9 @@ export class PreDefLeavesComponent implements OnInit {
     this.getLeaves();
   }
   getLeaves = () => {
+    this.loading = true;
     this.leaves.getLeaves().subscribe(leaves => {
+      this.loading = false;
       this.leavesList = leaves;
     });
   };

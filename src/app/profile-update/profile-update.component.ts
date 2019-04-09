@@ -30,7 +30,9 @@ export class ProfileUpdateComponent implements OnInit {
       firstName: ["", [Validators.required]],
       lastName: ["", [Validators.required]],
       phone: ["", [Validators.required]],
-      address: ["", [Validators.required]]
+      address: ["", [Validators.required]],
+      age: ["", []],
+      role: ["", []]
     });
     this.getUserData(this.UserId);
   }
@@ -44,7 +46,9 @@ export class ProfileUpdateComponent implements OnInit {
         lastName: this.profileData.lastName,
         email: this.profileData.email,
         phone: this.profileData.phone,
-        address: this.profileData.address
+        address: this.profileData.address,
+        age: this.profileData.age,
+        role: this.profileData.role
       });
     });
   };

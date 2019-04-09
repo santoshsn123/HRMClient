@@ -84,27 +84,20 @@ export class FilterUsers implements PipeTransform {
 }
 
 @Pipe({
-  name: "achFilter"
+  name: "empSearch"
 })
 export class FilterACHTransfer implements PipeTransform {
   transform(items: any[], searchText): any[] {
     if (!items) return [];
-    if (!searchText.dashboardACH) {
-      return items;
-    }
-    items = items.filter(it => {
-      var currentDate = new Date(it.createdAt);
-      let date = new Date();
-      let month = date.getMonth() + 1;
-      let year = date.getFullYear();
-      var firstDate = new Date(month + "-01-" + year);
-      if (currentDate > firstDate) {
-        return it;
-      } else {
-        return null;
-      }
+    if (!searchText.name) return items;
+    searchText.name = searchText.name.toLowerCase();
+    let item = items.filter(it => {
+      return it.firstName.toLowerCase().includes(searchText.name) ||
+        it.lastName.toLowerCase().includes(searchText.name)
+        ? it
+        : null;
     });
-    return items;
+    return item;
   }
 }
 

@@ -32,21 +32,21 @@
     margin-bottom: 0;
     position: relative;
     border-radius: 0;
-    
-    &:last-child{
+
+    &:last-child {
       border-radius: 0 !important;
     }
-    &:first-child{
+    &:first-child {
       margin-bottom: 20px;
     }
-    &:not(:first-child){
+    &:not(:first-child) {
       border-bottom: 1px solid #eee;
     }
     &.active {
       background-color: #f4f4f4;
 
-      &::before{
-        content: '';
+      &::before {
+        content: "";
         position: absolute;
         width: 8px;
         height: 8px;
@@ -120,6 +120,7 @@
   }
   &-count {
     // font-weight: 500;
-    font-size: 34px;
+    // font-size: 34px;
+    font-size: 22px;
   }
 }

@@ -31,7 +31,7 @@
               <div class="emp_total-icon"><i class="fas fa-briefcase"></i></div>
               <div class="emp_total-details">
                 <h3>Total Working Days</h3>
-                <div class="emp_total-count">30</div>
+                <div class="emp_total-count">{{ workingDays }}</div>
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@
               </div>
               <div class="emp_total-details">
                 <h3>Total Leaves Took</h3>
-                <div class="emp_total-count">1</div>
+                <div class="emp_total-count">{{ leavesofMonth }}</div>
               </div>
             </div>
           </div>
@@ -53,12 +53,18 @@
               </div>
               <div class="emp_total-details">
                 <h3>Total Salary</h3>
-                <div class="emp_total-count">19,856 <span>Rs</span></div>
+                <div class="emp_total-count">
+                  {{ salaryofMonth | currency: "₹":0 }} <span>Rs</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <app-calendar *ngIf="empId" [calenderUserId]="empId"></app-calendar>
+        <app-calendar
+          *ngIf="empId"
+          [calenderUserId]="empId"
+          (monthChange)="calenderChanged($event)"
+        ></app-calendar>
       </div>
     </div>
   </div>

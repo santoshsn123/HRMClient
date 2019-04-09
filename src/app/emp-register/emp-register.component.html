@@ -69,13 +69,28 @@ margin: 5% auto;"
           <tr>
             <td>Address</td>
             <td>
-              <input class="form-control" formControlName="address" />
+              <textarea
+                class="form-control"
+                formControlName="address"
+              ></textarea>
               <div
                 *ngIf="submitted && f.address.errors"
                 class="invalid-feedback"
               >
                 Please Enter Address
               </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Role</td>
+            <td>
+              <input class="form-control" formControlName="role" />
+            </td>
+          </tr>
+          <tr>
+            <td>Age</td>
+            <td>
+              <input class="form-control" formControlName="age" />
             </td>
           </tr>
           <tr>

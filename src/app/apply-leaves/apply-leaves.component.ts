@@ -50,7 +50,6 @@ export class ApplyLeavesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result == "add") {
         this.getAllUserleave();
-        this.showSuccessMessage("Leave applied successfully");
       }
     });
   };
