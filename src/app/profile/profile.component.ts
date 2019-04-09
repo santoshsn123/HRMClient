@@ -14,7 +14,9 @@ export class ProfileComponent implements OnInit {
   showsuccessMessage;
   showerrorMessage;
   loading: boolean = false;
-  baseUrl;
+  imageUploadUrl;
+  imageShowUrl;
+  uploadImage: boolean = false;
   constructor(private user: UsersService, private mainData: DataService) {}
 
   ngOnInit() {
@@ -22,7 +24,8 @@ export class ProfileComponent implements OnInit {
     this.UserId = this.currentUser.userId;
     this.getprofiledata();
 
-    this.baseUrl = this.mainData.baseUrl + "/user/imageUpload/" + this.UserId;
+    this.imageUploadUrl = this.mainData.imageUploadUrl + this.UserId;
+    this.imageShowUrl = this.mainData.imageShowUrl;
   }
 
   getprofiledata = () => {
@@ -45,6 +48,8 @@ export class ProfileComponent implements OnInit {
     return dt.getFullYear() + "-" + newmonth + "-" + newdate;
   };
   onUploadFinished = event => {
-    console.log(event);
+    // console.log(event);
+    this.getprofiledata();
+    this.uploadImage = false;
   };
 }

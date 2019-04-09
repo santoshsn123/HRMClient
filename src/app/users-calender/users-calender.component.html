@@ -23,7 +23,11 @@
           >
             <a href="javascript:void(0)" (click)="setEmployee(emp.id)">
               <img
-                src="../../assets/img/male_face.jpg"
+                src="{{
+                  emp.image
+                    ? imageShowUrl + emp.image
+                    : '../../assets/img/male_face.jpg'
+                }}"
                 class="img-circle"
                 alt=""
               />

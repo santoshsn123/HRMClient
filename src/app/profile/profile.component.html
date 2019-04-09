@@ -64,13 +64,29 @@
       <div class="panel-body articles-container profile-table">
         <table class="table">
           <tr>
-            <td colspan="2">
+            <td colspan="2" *ngIf="uploadImage">
               <image-upload
                 [max]="1"
-                url="{{ baseUrl }}"
+                url="{{ imageUploadUrl }}"
                 (uploadFinished)="onUploadFinished($event)"
                 [partName]="'profilePic'"
               ></image-upload>
+            </td>
+          </tr>
+          <tr>
+            <td>Image</td>
+            <td>
+              <img
+                src="{{
+                  profileData.image
+                    ? imageShowUrl + profileData.image
+                    : '../../assets/img/male_face.jpg'
+                }}"
+                class="profilePic"
+              />
+              <a href="javascript:void(0);" (click)="uploadImage = true"
+                >change</a
+              >
             </td>
           </tr>
           <tr>
@@ -104,7 +120,10 @@
           <tr>
             <td></td>
             <td>
-              <a class="btn btn-primary" href="javascript:void(0);" routerLink="../updateProfile"
+              <a
+                class="btn btn-primary"
+                href="javascript:void(0);"
+                routerLink="../updateProfile"
                 >Edit</a
               >
             </td>
