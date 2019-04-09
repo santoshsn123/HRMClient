@@ -1,4 +1,4 @@
-<div class="row" *ngIf="!dashboardACH">
+<div class="breadcrumb_wrap" *ngIf="!dashboardACH">
   <ol class="breadcrumb">
     <li>
       <a href="#"> <em class="fa fa-home"></em> </a>
@@ -46,10 +46,10 @@
             <td>Date</td>
             <td>Transaction Id</td>
           </tr>
+          <!-- | achFilter: { dashboardACH: dashboardACH } -->
           <tr
             *ngFor="
               let ach of (transactions
-                | achFilter: { dashboardACH: dashboardACH }
                 | paginate
                   : {
                       id: 'achTransfer',

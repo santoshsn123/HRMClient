@@ -1,4 +1,4 @@
-<div class="row" *ngIf="!dashboardData">
+<div class="breadcrumb_wrap" *ngIf="!dashboardData">
   <ol class="breadcrumb">
     <li>
       <a href="#"> <em class="fa fa-home"></em> </a>
@@ -6,25 +6,22 @@
     <li class="active">Employees</li>
   </ol>
 </div>
-<!-- <div class="row" *ngIf="!dashboardData">
+<div class="row" *ngIf="!dashboardData">
   <div class="col-md-offset-3 col-md-6 ">
     <form class="example-form">
-      <label for="userType"> Select User Type</label>
-      <select
-        name="userType"
-        id="userType"
-        [(ngModel)]="userType"
+      <label for="searchName">Search By Employee Name</label>
+      <input
+        type="text"
+        name="searchName"
+        id="searchName"
+        [(ngModel)]="searchName"
         class="form-control"
-      >
-        <option value=""> All</option>
-        <option value="admin"> Admin</option>
-        <option value="user"> User</option>
-        <option value="merchant"> Merchant</option>
-      </select>
+        placeholder="Search By Name"
+      />
       <br />
     </form>
   </div>
-</div> -->
+</div>
 
 <div class="row">
   <div class="col-md-12">
@@ -69,6 +66,8 @@
             <td>Email</td>
             <td>Active Status</td>
             <td>Phone</td>
+            <td>Role</td>
+            <td>Age</td>
             <td>Salary</td>
 
             <td>Action</td>
@@ -76,6 +75,7 @@
           <tr
             *ngFor="
               let user of (users
+                | empSearch: { name: searchName }
                 | paginate
                   : {
                       id: 'user_id',
@@ -96,6 +96,8 @@
               >
             </td>
             <td>{{ user.phone }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.age }}</td>
             <td>{{ user.salary | currency: "₹":0 }}</td>
 
             <td>
@@ -128,7 +130,9 @@
         <div class="loading_position">
           <i *ngIf="loading" class="fa fa-refresh fa-spin icon_size"></i>
         </div>
-        <ng-template #noUsers> No Transactions Available </ng-template>
+        <ng-template *ngIf="!loading" #noUsers>
+          No Employees Available
+        </ng-template>
 
         <pagination-controls
           id="user_id"

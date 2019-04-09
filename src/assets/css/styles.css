@@ -111,10 +111,10 @@ input.form-control {
   border: 1px solid #f9243f;
 }
 
-.navbar-custom {
+/* .navbar-custom {
   background: #222;
   height: 60px;
-}
+} */
 
 .navbar-header .navbar-brand {
   color: #fff;
@@ -673,8 +673,10 @@ a.label:focus {
 
 .panel-default .panel-heading {
   background: #fff;
-  border-bottom: 1px solid #e9ecf2;
+  /* border-bottom: 1px solid #e9ecf2; */
+  border: none;
   color: #444444;
+  padding: 10px 15px 0 15px;
 }
 
 .panel-footer {
@@ -763,7 +765,7 @@ a.label:focus {
 .panel-settings,
 .panel-toggle {
   display: inline-block;
-  margin: -1px -5px 0 15px !important;
+  /* margin: -1px -5px 0 15px !important; */
   border-radius: 4px;
   text-align: center;
   border: 1px solid #e9ecf2;
@@ -1106,7 +1108,7 @@ a.label:focus {
 }
 
 .user-menu {
-  display: inline-block;
+  /* display: inline-block; */
   margin-top: 14px;
   margin-right: 10px;
   float: right;
@@ -1141,7 +1143,7 @@ a.label:focus {
 }
 
 @media (min-width: 768px) {
-  .sidebar {
+  /* .sidebar {
     display: block;
     position: fixed;
     top: 60px;
@@ -1153,7 +1155,7 @@ a.label:focus {
     padding: 0;
     overflow-x: hidden;
     overflow-y: auto;
-  }
+  } */
 
   .navbar-header {
     width: 100%;
@@ -1162,8 +1164,8 @@ a.label:focus {
 .sidebar ul.nav a:hover,
 .sidebar ul.nav li.parent ul li a:hover {
   text-decoration: none;
-  background-color: #30a5ff;
-  color: #fff;
+  background-color: #ebebeb;
+  color: #444;
 }
 
 .sidebar ul.nav .active a,
@@ -1172,8 +1174,8 @@ a.label:focus {
 .sidebar ul.nav li.parent a.active:hover,
 .sidebar ul.nav .active > a:focus,
 .sidebar ul.nav li.parent a.active:focus {
-  color: #fff;
-  background-color: #30a5ff;
+  background-color: #ebebeb;
+  color: #444;
 }
 
 .sidebar ul.nav ul,
@@ -1187,6 +1189,7 @@ a.label:focus {
   font-size: 14px;
   line-height: 2em;
   color: #444444;
+  font-weight: 500;
 }
 
 .sidebar ul.nav ul.children {
@@ -1221,8 +1224,9 @@ a.label:focus {
 }
 
 .profile-sidebar {
-  padding: 10px 0;
-  border-bottom: 1px solid #e9ecf2;
+  /* padding: 10px 0; */
+  /* border-bottom: 1px solid #e9ecf2; */
+  /* background-color: #333; */
 }
 
 .indicator {
@@ -1242,14 +1246,20 @@ a.label:focus {
 }
 
 .profile-usertitle {
-  float: left;
+  /* float: left; */
   text-align: left;
-  margin: 10px 0 0 12px;
+  /* margin: 10px 0 0 10px; */
+  border-left: 5px solid #3bafda;
+    /* padding: 10px 0 5px 10px; */
+    background-color: #333;
 }
 
 .profile-usertitle-name {
-  font-size: 20px;
+  font-size: 16px;
   margin-bottom: 0px;
+  color: #fff;
+  line-height: 36px;
+    padding-left: 5px;
 }
 
 .profile-usertitle-status {
@@ -1257,13 +1267,14 @@ a.label:focus {
   color: #aaa;
   font-size: 12px;
   font-weight: 600;
-  margin-bottom: 15px;
+  padding-left: 5px;
+  /* margin-bottom: 15px; */
 }
 
 .breadcrumb {
   border-radius: 0;
-  padding: 10px 15px 10px 15px;
-  background: #e9ecf2;
+  padding: 12px 15px;
+  background: #3bafda;
   margin: 0;
 }
 
@@ -1501,4 +1512,89 @@ p.back-link {
   margin-bottom: 20px;
   font-size: 12px;
   text-transform: uppercase;
+}
+
+
+/*------------------- new style -------------------*/
+.sidebar_toggle{
+  float: left;
+color: #fff;
+font-size: 22px;
+padding: 5px 8px;
+border-radius: 5px;
+border: 1px solid rgba(256,256,256,0.2);
+line-height: 0;
+margin: 13px 0;
+cursor: pointer;
+}
+.header_logo{     padding: 8px;
+  display: block;
+  margin-bottom: 20px;
+  width: 100%; }
+  .header_logo img{ max-width: 100%; }
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 240px;
+}
+.navbar-custom {
+  background: #2f353f;
+  height: 60px;
+  width: calc(100% - 240px);
+  left: auto;
+  right: 0;
+  top: 0;
+}
+.main{
+  width: calc(100% - 240px);
+margin-left: 0;
+float: right;
+padding: 0 30px;
+}
+.main_panel_container {
+  border-radius: 0;
+  margin-top: 30px;
+  background-color: transparent;
+box-shadow: none;
+}
+.main_panel_container .articles-container{ padding: 0; }
+.calendar_panel_container{
+  margin-top: 30px;
+}
+.breadcrumb_wrap{
+    margin: 0 -30px 30px;
+}
+.breadcrumb a, .breadcrumb li.active, .breadcrumb > li + li::before{
+    color: #fff;
+}
+.breadcrumb .fa{ font-size: 20px; }
+.articles-container .table tbody tr td{
+  padding: 14px 8px;
+}
+.punch_container{
+  width: 720px;
+    margin: 40px auto 10px;
+    position: relative;
+}
+.punch_in{
+  float: left;
+  z-index: 9;
+  position: relative;
+}
+.punch_container .timeFont{
+  width: 100%;
+    position: absolute;
+    text-align: center;
+    z-index: 4;
+}
+.punch_out{
+  float: right;
+  z-index: 9;
+  position: relative;
 }

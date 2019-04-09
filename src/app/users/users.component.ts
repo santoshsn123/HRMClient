@@ -35,6 +35,7 @@ export class UsersComponent implements OnInit {
   userType: string = "";
   activestatus = "";
   loading: boolean = true;
+  noUsers;
   @Input() dashboardData: string;
 
   constructor(

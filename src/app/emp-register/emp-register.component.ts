@@ -40,7 +40,9 @@ export class EmpRegisterComponent implements OnInit {
       ],
       address: ["", [Validators.required]],
       password: ["", [Validators.required]],
-      cpassword: ["", [Validators.required]]
+      cpassword: ["", [Validators.required]],
+      role: [""],
+      age: [""]
     });
 
     console.log("Before call", this.userId);

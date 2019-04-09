@@ -1,7 +1,7 @@
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button
+      <!-- <button
         type="button"
         class="navbar-toggle collapsed"
         data-toggle="collapse"
@@ -10,14 +10,12 @@
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span> <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>
-      <a class="" href="#" routerLink="dashboard">
-        <img
-          style="   width: 75px;
-          margin: 7px;"
-          src="https://pbs.twimg.com/profile_images/451342330021163008/y8jn-XxO_400x400.jpeg"
-        />
-      </a>
+      </button> -->
+      <!-- (click)="sidebar_toggle($event)" -->
+      <div class="sidebar_toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+
       <ul class="nav navbar-top-links navbar-right">
         <li class="dropdown">
           <a
@@ -121,7 +119,13 @@
   </div>
   <!-- /.container-fluid -->
 </nav>
-<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+<div id="sidebar-collapse" class="sidebar">
+  <a class="header_logo" href="#" routerLink="dashboard">
+    <img
+      style="margin: 7px;"
+      src="http://entitledarts.com/entitle-new/wp-content/uploads/2019/04/side-menu-logo.png"
+    />
+  </a>
   <div class="profile-sidebar">
     <!--
       <div class="profile-userpic">
@@ -133,7 +137,9 @@
       </div>
     -->
     <div class="profile-usertitle">
-      <div class="profile-usertitle-name">{{ currentUser.firstName }}</div>
+      <div class="profile-usertitle-name">
+        {{ currentUser.firstName }}
+      </div>
       <div class="profile-usertitle-status">
         <!-- <span class="indicator label-success"></span>Online -->
       </div>
