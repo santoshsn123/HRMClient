@@ -112,6 +112,10 @@ export class UsersComponent implements OnInit {
       console.log(data);
       this.users = data;
       this.loading = false;
+      this.users.map(user => {
+        return (user.createdAt = this.getFormatedDate(user.createdAt, ""));
+      });
+      // this.users.createdAt = this.getFormatedDate(this.users.createdAt, "");
     });
   }
   deleteUser(user) {
@@ -152,6 +156,16 @@ export class UsersComponent implements OnInit {
         this.showSuccessMessage("User Updated successfully");
       }
     });
+  };
+
+  getFormatedDate = (date, day) => {
+    let dt = new Date(date);
+    var month = dt.getMonth() + 1;
+    let dateinit, newmonth, newdate;
+    dateinit = day ? day : dt.getDate();
+    newmonth = month < 10 ? "0" + month : month;
+    newdate = dateinit < 10 ? "0" + dateinit : dateinit;
+    return dt.getFullYear() + "-" + newmonth + "-" + newdate;
   };
 }
 

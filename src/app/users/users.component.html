@@ -28,7 +28,7 @@
     <div class="panel panel-default articles">
       <div class="panel-heading">
         Employee Management
-        
+
         <ul class="pull-right panel-settings panel-button-tab-right">
           <li class="dropdown">
             <a
@@ -41,17 +41,17 @@
           </li>
         </ul>
         <div class="dashboard_emp-search" *ngIf="!dashboardData">
-            <form class="example-form">
-                <label for="searchName">Search By Employee Name</label>
-                <input
-                  type="text"
-                  name="searchName"
-                  id="searchName"
-                  [(ngModel)]="searchName"
-                  class="form-control"
-                  placeholder="Search By Name"
-                />
-              </form>
+          <form class="example-form">
+            <label for="searchName">Search By Employee Name</label>
+            <input
+              type="text"
+              name="searchName"
+              id="searchName"
+              [(ngModel)]="searchName"
+              class="form-control"
+              placeholder="Search By Name"
+            />
+          </form>
         </div>
       </div>
       <div class="alert bg-success" *ngIf="showsuccessMessage" role="alert">
@@ -81,7 +81,7 @@
             <td>Active Status</td>
             <td>Phone</td>
             <td>Role</td>
-            <td>Age</td>
+            <td>Date Of Joining</td>
             <td>Salary</td>
 
             <td>Action</td>
@@ -111,7 +111,7 @@
             </td>
             <td>{{ user.phone }}</td>
             <td>{{ user.role }}</td>
-            <td>{{ user.age }}</td>
+            <td>{{ user.createdAt }}</td>
             <td>{{ user.salary | currency: "₹":0 }}</td>
 
             <td>
