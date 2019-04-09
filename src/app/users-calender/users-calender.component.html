@@ -6,19 +6,30 @@
           <li class="list-group-item employee_list-title">
             <h4>Employees</h4>
           </li>
+          <li class="list-group-item employee_list-title">
+            <input
+              type="text"
+              name="searchName"
+              id="searchName"
+              [(ngModel)]="searchName"
+              class="form-control"
+              placeholder="Search By Name"
+            />
+          </li>
           <li
             class="list-group-item"
-            *ngFor="let emp of empList"
+            *ngFor="let emp of (empList | empSearch: { name: searchName })"
             [ngClass]="{ active: emp.id == empId }"
           >
             <a href="javascript:void(0)" (click)="setEmployee(emp.id)">
               <img
-                src="../../assets/img/male_face.JPG"
+                src="../../assets/img/male_face.jpg"
                 class="img-circle"
                 alt=""
               />
-              {{ emp.firstName + " " + emp.lastName }}</a
-            >
+              {{ emp.firstName + " " + emp.lastName }} <br />
+              <span class="roleClass">{{ emp.role }}</span>
+            </a>
           </li>
           <!-- <li class="list-group-item">Second item</li>
                 <li class="list-group-item">Third item</li> -->
