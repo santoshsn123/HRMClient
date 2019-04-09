@@ -7,3 +7,12 @@
 .invalid-feedback {
   color: #ff0000;
 }
+.mat-dialog-title{
+  margin: 0 0 30px;
+}
+.mat-dialog-content .table tbody tr td{
+  border: none;
+}
+.mat-dialog-content .mat-form-field{
+  display: block;
+}
