@@ -40,4 +40,7 @@ export class ProfileComponent implements OnInit {
     newdate = dateinit < 10 ? "0" + dateinit : dateinit;
     return dt.getFullYear() + "-" + newmonth + "-" + newdate;
   };
+  onUploadFinished = event => {
+    console.log(event);
+  };
 }

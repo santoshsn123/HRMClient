@@ -76,7 +76,8 @@ import {
   ApplyLeavesComponent,
   applyLeave
 } from "./apply-leaves/apply-leaves.component";
-import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ForgetPasswordComponent } from "./forget-password/forget-password.component";
+import { ImageUploadModule } from "angular2-image-upload";
 
 @NgModule({
   declarations: [
@@ -131,7 +132,8 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     Angular2CsvModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTabsModule
+    MatTabsModule,
+    ImageUploadModule.forRoot()
   ],
   providers: [
     MatDatepickerModule,

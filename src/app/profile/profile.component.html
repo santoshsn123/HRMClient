@@ -64,6 +64,15 @@
       <div class="panel-body articles-container">
         <table class="table">
           <tr>
+            <td colspan="2">
+              <image-upload
+                url="http://localhost:9999/imageUpload"
+                (uploadFinished)="onUploadFinished($event)"
+                [partName]="'profilePic'"
+              ></image-upload>
+            </td>
+          </tr>
+          <tr>
             <td>Name</td>
             <td>{{ profileData.firstName + " " + profileData.lastName }}</td>
           </tr>
