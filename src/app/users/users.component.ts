@@ -35,6 +35,7 @@ export class UsersComponent implements OnInit {
   userType: string = "";
   activestatus = "";
   loading: boolean = true;
+  noUsers;
   @Input() dashboardData: string;
 
   constructor(
@@ -80,7 +81,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     // console.log("dynamicdata init : - ", this.dashboardData);
-    this.userType = this.dashboardData;
+
     this.loading = true;
     this.loadUsers();
     this.activestatus = this.dashboardData ? "active" : "";
@@ -142,7 +143,7 @@ export class UsersComponent implements OnInit {
     user.type = "edit";
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: "500px",
-      data: { uuid: user.uuid, type: "edit" }
+      data: { uuid: user.id, type: "edit" }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -164,7 +165,7 @@ export class UsersComponent implements OnInit {
 export class DialogOverviewExampleDialog {
   registerForm: FormGroup;
   submitted = false;
-  userType;
+
   passwordmissmatch: boolean = false;
   showBankingError: string;
   errorMessage: string;
@@ -183,12 +184,24 @@ export class DialogOverviewExampleDialog {
     this.registerForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
       firstName: ["", [Validators.required]],
-      lastName: ["", [Validators.required]]
+      lastName: ["", [Validators.required]],
+      salary: [""]
     });
 
     //Fetch data to display in form to update
     if (this.data.type == "edit") {
-      // this.user.getSingleUser(this.data.uuid).subscribe(FetchedUser => {
+      this.loading = true;
+      this.user.getSingleUser(this.data.uuid).subscribe(FetchedUser => {
+        this.loading = false;
+        console.log("FetchedUser : -  ", FetchedUser);
+        this.FetchedUser = FetchedUser;
+        this.registerForm.patchValue({
+          email: this.FetchedUser.email,
+          firstName: this.FetchedUser.firstName,
+          lastName: this.FetchedUser.lastName,
+          salary: this.FetchedUser.salary
+        });
+      });
       //   this.FetchedUser = FetchedUser;
       //   this.registerForm.patchValue({
       //     email: this.FetchedUser.user.email,
@@ -245,17 +258,35 @@ export class DialogOverviewExampleDialog {
       console.log("Saving Users :- ", this.registerForm.value);
       this.loading = true;
       this.errorMessage = "";
-      this.user.saveUser(this.registerForm.value).subscribe(
-        data => {
-          console.log(data);
-          this.dialogRef.close("add");
-          this.loading = false;
-        },
-        error => {
-          this.loading = false;
-          this.errorMessage = error.error.message;
-        }
-      );
+      if (this.data.type == "add") {
+        this.user.saveUser(this.registerForm.value).subscribe(
+          data => {
+            console.log(data);
+            this.dialogRef.close("add");
+            this.loading = false;
+          },
+          error => {
+            this.loading = false;
+            this.errorMessage = error.error.message;
+          }
+        );
+      }
+      if (this.data.type == "edit") {
+        console.log("Update Here :- ", this.registerForm.value, this.data.uuid);
+        this.user
+          .updateUserByAdmin(this.registerForm.value, this.data.uuid)
+          .subscribe(
+            data => {
+              console.log(data);
+              this.dialogRef.close("edit");
+              this.loading = false;
+            },
+            error => {
+              this.loading = false;
+              this.errorMessage = error.error.message;
+            }
+          );
+      }
     }
 
     // alert('SUCCESS!! :-)')

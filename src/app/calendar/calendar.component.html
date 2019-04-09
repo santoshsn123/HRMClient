@@ -1,3 +1,6 @@
+<div class="loadingClass" *ngIf="isLoading">
+  <i class="fa fa-refresh fa-spin icon_size icon_pos"></i>
+</div>
 <div class="row ">
   <div class="col-md-12">
     <div class="panel panel-default articles calendar_panel_container">
@@ -5,14 +8,22 @@
         <div class="">
           <div class="row">
             <div class="col-md-4">
-              <a href="javascript:void(0);" (click)="prevMonth()" class="calender_controls"><i class="fas fa-angle-left"></i>
+              <a
+                href="javascript:void(0);"
+                (click)="prevMonth()"
+                class="calender_controls"
+                ><i class="fas fa-angle-left"></i>
               </a>
             </div>
             <div class="col-md-4 timeFont">
               {{ months[date.getMonth()] }} - {{ date.getFullYear() }}
             </div>
             <div class="col-md-4" style="text-align: right">
-              <a href="javascript:void(0);" (click)="nextMonth()" class="calender_controls"><i class="fas fa-angle-right"></i>
+              <a
+                href="javascript:void(0);"
+                (click)="nextMonth()"
+                class="calender_controls"
+                ><i class="fas fa-angle-right"></i>
               </a>
             </div>
           </div>
@@ -29,20 +40,38 @@
               class="calendar-box"
               *ngFor="let day of monthArray"
               [ngClass]="{
+                presentClass: day.data,
                 leaveClass: day.leave,
+                absentClass: day.empWasOnLeave,
                 sundayClass: (preBlanks.length + day.day - 1) % 7 == 0
               }"
             >
-              <div class="showday">{{ day.day }}</div>
+              <div class="showday">
+                {{ day.day }}
+              </div>
               <div *ngIf="day.data" class="day_tooltip">
                 <span class="timings"
                   >Start Time : {{ day.data.formatedStartTime }}</span
                 >
                 <br />
+                <span *ngFor="let sub of day.data.SubTimings; let i = index">
+                  <span class="timings">
+                    &nbsp; PunchIn {{ i + 1 }}: {{ sub.startFormatedTime }}
+                  </span>
+                  <br />
+
+                  <span class="timings">
+                    &nbsp; PunchOut {{ i + 1 }}: {{ sub.endFormatedTime }}
+                  </span>
+                  <br />
+                </span>
                 <span class="timings"
                   >End Time : {{ day.data.formatedEndTime }}</span
                 ><br />
                 <span class="timings">Total : {{ day.data.totalTiming }}</span>
+              </div>
+              <div *ngIf="day.leave" class="day_tooltip">
+                <span class="timings">{{ day.leaveReason }}</span>
               </div>
               <!-- <span *ngIf="day.leave">leave Day</span> -->
             </div>

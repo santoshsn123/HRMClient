@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { TimingsService } from "../services/timings/timings.service";
 import { LeavesService } from "../services/leaves/leaves.service";
+import { UsersService } from "../services/users/users.service";
 
 @Component({
   selector: "app-calendar",
@@ -18,8 +19,17 @@ export class CalendarComponent implements OnInit {
   currentUser;
   monthData;
   predefinedLeaves;
+  userData;
+  isLoading: boolean = false;
+  noOfLeaves: number = 0;
+
   @Input() calenderUserId: string;
-  constructor(private timings: TimingsService, private leave: LeavesService) {
+  @Output() monthChange = new EventEmitter();
+  constructor(
+    private timings: TimingsService,
+    private leave: LeavesService,
+    private user: UsersService
+  ) {
     this.months = [
       "January",
       "February",
@@ -44,6 +54,7 @@ export class CalendarComponent implements OnInit {
     this.createCalendar();
     // this.getdataForMonth();
   }
+
   getdataForMonth = () => {
     let userId = this.calenderUserId
       ? this.calenderUserId
@@ -52,11 +63,22 @@ export class CalendarComponent implements OnInit {
       this.monthData = data;
       this.leave.getLeaves().subscribe(predefinedLeaves => {
         this.predefinedLeaves = predefinedLeaves;
-        this.showAccordingToDate();
+        this.user.getSingleUser(userId).subscribe(
+          userData => {
+            this.userData = userData;
+            this.showAccordingToDate();
+            this.isLoading = false;
+          },
+          erro => {
+            this.isLoading = false;
+          }
+        );
       });
     });
   };
   createCalendar = () => {
+    this.monthChange.emit(this.date);
+    this.isLoading = true;
     this.getdataForMonth();
     let date = new Date(this.date);
     date.getFullYear;
@@ -65,7 +87,7 @@ export class CalendarComponent implements OnInit {
     let firstdayoftheweek = firstDate.getDay();
     var lastDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     this.monthArray = this.createArrayofNumber(lastDate.getDate());
-    this.preBlanks = this.createArrayofNumber(firstdayoftheweek - 1);
+    this.preBlanks = this.createArrayofNumber(firstdayoftheweek);
     this.lastBlanks = lastDate.getDay()
       ? this.createArrayofNumber(7 - lastDate.getDay())
       : [];
@@ -90,11 +112,24 @@ export class CalendarComponent implements OnInit {
   };
   showAccordingToDate = () => {
     this.monthArray.map(day => {
+      day.empWasOnLeave = true;
+      day.empWasOnLeave = this.compairDates(
+        this.getFormatedDate(this.date, day.day),
+        new Date()
+      )
+        ? false
+        : this.compairDates(
+            this.getFormatedDate(this.date, day.day),
+            this.userData.createdAt
+          )
+        ? true
+        : false;
       this.monthData.map(data => {
         if (
           this.getFormatedDate(data.startTime, "") ==
           this.getFormatedDate(this.date, day.day)
         ) {
+          day.empWasOnLeave = false;
           day.data = data;
         }
         return data;
@@ -105,6 +140,7 @@ export class CalendarComponent implements OnInit {
           this.getFormatedDate(this.date, day.day)
         ) {
           day.leave = true;
+          day.leaveReason = leave.reason;
         }
       });
     });
@@ -120,6 +156,13 @@ export class CalendarComponent implements OnInit {
     // });
   };
 
+  // checkifAbsent = day => {
+  //   return day.data
+  //     ? false
+  //     : this.compairDates(this.getFormatedDate(new Date(), day.day), new Date())
+  //     ? false
+  //     : true;
+  // };
   formateTime = time => {
     let tm = new Date(time);
     let minutes =
@@ -136,5 +179,11 @@ export class CalendarComponent implements OnInit {
     newmonth = month < 10 ? "0" + month : month;
     newdate = dateinit < 10 ? "0" + dateinit : dateinit;
     return dt.getFullYear() + "-" + newmonth + "-" + newdate;
+  };
+
+  compairDates = (date1, date2) => {
+    let dt = new Date(date1);
+    let dt2 = new Date(date2);
+    return dt > dt2 ? true : false;
   };
 }

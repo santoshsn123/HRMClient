@@ -18,6 +18,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user"));
     this.UserId = this.currentUser.userId;
+    this.getprofiledata();
+  }
+
+  getprofiledata = () => {
     this.user.getSingleUser(this.UserId).subscribe(data => {
       this.profileData = data;
       this.profileData.createdAt = this.getFormatedDate(
@@ -26,8 +30,7 @@ export class ProfileComponent implements OnInit {
       );
       console.log(data);
     });
-  }
-
+  };
   getFormatedDate = (date, day) => {
     let dt = new Date(date);
     var month = dt.getMonth() + 1;

@@ -46,10 +46,10 @@
             <td>Date</td>
             <td>Transaction Id</td>
           </tr>
+          <!-- | achFilter: { dashboardACH: dashboardACH } -->
           <tr
             *ngFor="
               let ach of (transactions
-                | achFilter: { dashboardACH: dashboardACH }
                 | paginate
                   : {
                       id: 'achTransfer',

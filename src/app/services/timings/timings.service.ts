@@ -24,4 +24,19 @@ export class TimingsService {
       this.baseUrl + "/timings/getMonthlyStat/" + id + "/" + date
     );
   };
+
+  getWorkingDaysOfMonth = date => {
+    return this.http.get(this.baseUrl + "/timings/getWorkingDays/" + date);
+  };
+
+  getLeavesofEmp = (id, date) => {
+    return this.http.get(
+      this.baseUrl + "/timings/getLeavesInMonth/" + id + "/" + date
+    );
+  };
+  getSalaryMonth = (id, date) => {
+    return this.http.get(
+      this.baseUrl + "/timings/getSalaryMonth/" + id + "/" + date
+    );
+  };
 }

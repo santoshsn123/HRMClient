@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cashless-admin": {
+    "HRM": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cashless-admin",
+            "outputPath": "dist/HRM",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -59,18 +59,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "cashless-admin:build"
+            "browserTarget": "HRM:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "cashless-admin:build:production"
+              "browserTarget": "HRM:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cashless-admin:build"
+            "browserTarget": "HRM:build"
           }
         },
         "test": {
@@ -98,7 +98,7 @@
         }
       }
     },
-    "cashless-admin-e2e": {
+    "HRM-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -107,11 +107,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "cashless-admin:serve"
+            "devServerTarget": "HRM:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "cashless-admin:serve:production"
+              "devServerTarget": "HRM:serve:production"
             }
           }
         },
@@ -125,5 +125,5 @@
       }
     }
   },
-  "defaultProject": "cashless-admin"
+  "defaultProject": "HRM"
 }

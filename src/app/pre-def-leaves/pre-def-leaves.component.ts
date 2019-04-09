@@ -19,13 +19,16 @@ export class PreDefLeavesComponent implements OnInit {
   currentPage: number = 1;
   showerrorMessage;
   loading: boolean = false;
+  noLeaves;
   constructor(private dialog: MatDialog, private leaves: LeavesService) {}
 
   ngOnInit() {
     this.getLeaves();
   }
   getLeaves = () => {
+    this.loading = true;
     this.leaves.getLeaves().subscribe(leaves => {
+      this.loading = false;
       this.leavesList = leaves;
     });
   };

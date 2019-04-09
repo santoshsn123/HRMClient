@@ -30,12 +30,30 @@ export class UsersService {
     return this.http.put(this.baseUrl + "/admin/users/" + id, Object);
   }
 
+  updateUserByAdmin(Object, id) {
+    return this.http.put(this.baseUrl + "/admin/usersByAdmin/" + id, Object);
+  }
+
   deleteUser(id) {
     return this.http.delete(this.baseUrl + "/admin/users/" + id);
   }
 
   changeUserStatus = (Object, uuid) => {
     return this.http.put(this.baseUrl + "/admin/userStatus/" + uuid, Object);
+  };
+
+  forgetPassword = Object => {
+    return this.http.post(this.baseUrl + "/admin/forgetPassword/", Object);
+  };
+
+  validateForgetPassLink = link => {
+    return this.http.get(this.baseUrl + "/admin/forgetPassword/" + link);
+  };
+  resetPassword = (Object, link) => {
+    return this.http.put(
+      this.baseUrl + "/admin/forgetPassword/" + link,
+      Object
+    );
   };
 
   getSingleUser = id => {
