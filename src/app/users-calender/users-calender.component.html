@@ -6,10 +6,24 @@
           <li class="list-group-item employee_list-title">
             <h4>Employees</h4>
           </li>
-          <li class="list-group-item" *ngFor="let emp of empList" [ngClass]="{ active: emp.id == empId }">
+          <li
+            class="list-group-item"
+            *ngFor="let emp of empList"
+            [ngClass]="{ active: emp.id == empId }"
+          >
             <a href="javascript:void(0)" (click)="setEmployee(emp.id)">
+<<<<<<< HEAD
               <img src="../../assets/img/male_face.jpg" class="img-circle" alt="">
               {{ emp.firstName + " " + emp.lastName }}</a>
+=======
+              <img
+                src="../../assets/img/male_face.JPG"
+                class="img-circle"
+                alt=""
+              />
+              {{ emp.firstName + " " + emp.lastName }}</a
+            >
+>>>>>>> develop
           </li>
           <!-- <li class="list-group-item">Second item</li>
                 <li class="list-group-item">Third item</li> -->
@@ -22,30 +36,40 @@
               <div class="emp_total-icon"><i class="fas fa-briefcase"></i></div>
               <div class="emp_total-details">
                 <h3>Total Working Days</h3>
-                <div class="emp_total-count">30</div>
+                <div class="emp_total-count">{{ workingDays }}</div>
               </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="emp_total-container emp_total-leaves">
-              <div class="emp_total-icon"><i class="fas fa-user-minus"></i></div>
+              <div class="emp_total-icon">
+                <i class="fas fa-user-minus"></i>
+              </div>
               <div class="emp_total-details">
                 <h3>Total Leaves Took</h3>
-                <div class="emp_total-count">1</div>
+                <div class="emp_total-count">{{ leavesofMonth }}</div>
               </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="emp_total-container emp_total-salary">
-              <div class="emp_total-icon"><i class="fas fa-rupee-sign"></i></div>
+              <div class="emp_total-icon">
+                <i class="fas fa-rupee-sign"></i>
+              </div>
               <div class="emp_total-details">
                 <h3>Total Salary</h3>
-                <div class="emp_total-count">19,856 <span>Rs</span></div>
+                <div class="emp_total-count">
+                  {{ salaryofMonth | currency: "₹":0 }} <span>Rs</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <app-calendar *ngIf="empId" [calenderUserId]="empId"></app-calendar>
+        <app-calendar
+          *ngIf="empId"
+          [calenderUserId]="empId"
+          (monthChange)="calenderChanged($event)"
+        ></app-calendar>
       </div>
     </div>
   </div>
