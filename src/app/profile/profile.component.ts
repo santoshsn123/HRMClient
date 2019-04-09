@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { UsersService } from "../services/users/users.service";
+import { DataService } from "../data.service";
 
 @Component({
   selector: "app-profile",
@@ -13,12 +14,15 @@ export class ProfileComponent implements OnInit {
   showsuccessMessage;
   showerrorMessage;
   loading: boolean = false;
-  constructor(private user: UsersService) {}
+  baseUrl;
+  constructor(private user: UsersService, private mainData: DataService) {}
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user"));
     this.UserId = this.currentUser.userId;
     this.getprofiledata();
+
+    this.baseUrl = this.mainData.baseUrl + "/user/imageUpload/" + this.UserId;
   }
 
   getprofiledata = () => {

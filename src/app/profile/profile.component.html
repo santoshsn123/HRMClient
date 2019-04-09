@@ -66,7 +66,8 @@
           <tr>
             <td colspan="2">
               <image-upload
-                url="http://localhost:9999/imageUpload"
+                [max]="1"
+                url="{{ baseUrl }}"
                 (uploadFinished)="onUploadFinished($event)"
                 [partName]="'profilePic'"
               ></image-upload>
