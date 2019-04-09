@@ -3,3 +3,17 @@
 
 @import url("../../assets/css/font-awesome.min.css");
 @import url("../../assets/css/datepicker3.css");
+
+.profile-table table tr td{ border: none; }
+.profile-table table tr td:first-child{
+    width: 200px;
+}
+.profile-table table tbody tr td:last-child{
+    font-weight: 500;
+}
+.profile-table table tbody tr{
+    border-bottom: 1px solid #eeeeee;
+}
+.profile-table table tbody tr:last-child, .profile-table table tbody tr:nth-last-child(2){
+    border: none;
+}
