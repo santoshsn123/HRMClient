@@ -13,3 +13,6 @@
 .profile-update table tr td input.form-control, .profile-update table tr td textarea.form-control{
     width: 300px;
 }
+.profile-update table tbody tr:first-child td{
+    font-weight: normal;
+}
