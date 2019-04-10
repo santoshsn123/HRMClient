@@ -92,7 +92,8 @@
   margin-top: 50px;
 }
 .leaveClass,
-.notifyClass {
+.notifyClass,
+.applied_leaveClass {
   background-color: #fcb03b !important;
   color: #fff;
 }
@@ -109,6 +110,18 @@
   background-color: #db4b4be6;
   color: #fff;
 }
+.unapproved_leaveClass {
+  background-color: #7a0a0a;
+  color: #fff;
+}
+.paid_leaveClass {
+  background-color: #fce53b;
+  color: #fff;
+}
+.unpaid_leaveClass {
+  background-color: #4081e3;
+  color: #fff;
+}
 
 .loadingClass {
   z-index: 20;
@@ -120,4 +133,37 @@
 .icon_pos {
   margin-top: 36%;
   margin-left: 50%;
+}
+.calender_legend {
+  background-color: #fff;
+  padding: 15px;
+  width: 100%;
+  float: left;
+  h2 {
+    margin: 0;
+    width: 100%;
+    font-size: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  ul {
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    float: left;
+    margin: 10px;
+
+    .color_box {
+      width: 30px;
+      height: 20px;
+      float: left;
+      margin-right: 5px;
+    }
+    .color_info {
+      float: left;
+      display: block;
+    }
+  }
 }

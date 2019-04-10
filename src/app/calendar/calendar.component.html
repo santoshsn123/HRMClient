@@ -8,22 +8,16 @@
         <div class="">
           <div class="row">
             <div class="col-md-4">
-              <a
-                href="javascript:void(0);"
-                (click)="prevMonth()"
-                class="calender_controls"
-                ><i class="fas fa-angle-left"></i>
+              <a href="javascript:void(0);" (click)="prevMonth()" class="calender_controls"><i
+                  class="fas fa-angle-left"></i>
               </a>
             </div>
             <div class="col-md-4 timeFont">
               {{ months[date.getMonth()] }} - {{ date.getFullYear() }}
             </div>
             <div class="col-md-4" style="text-align: right">
-              <a
-                href="javascript:void(0);"
-                (click)="nextMonth()"
-                class="calender_controls"
-                ><i class="fas fa-angle-right"></i>
+              <a href="javascript:void(0);" (click)="nextMonth()" class="calender_controls"><i
+                  class="fas fa-angle-right"></i>
               </a>
             </div>
           </div>
@@ -36,23 +30,17 @@
             <div class="calendar-box">Fri</div>
             <div class="calendar-box">Sat</div>
             <div class="calendar-box" *ngFor="let blanks of preBlanks"></div>
-            <div
-              class="calendar-box"
-              *ngFor="let day of monthArray"
-              [ngClass]="{
+            <div class="calendar-box" *ngFor="let day of monthArray" [ngClass]="{
                 presentClass: day.data,
                 leaveClass: day.leave,
                 absentClass: day.empWasOnLeave,
                 sundayClass: (preBlanks.length + day.day - 1) % 7 == 0
-              }"
-            >
+              }">
               <div class="showday">
                 {{ day.day }}
               </div>
               <div *ngIf="day.data" class="day_tooltip">
-                <span class="timings"
-                  >Start Time : {{ day.data.formatedStartTime }}</span
-                >
+                <span class="timings">Start Time : {{ day.data.formatedStartTime }}</span>
                 <br />
                 <span *ngFor="let sub of day.data.SubTimings; let i = index">
                   <span class="timings">
@@ -65,9 +53,7 @@
                   </span>
                   <br />
                 </span>
-                <span class="timings"
-                  >End Time : {{ day.data.formatedEndTime }}</span
-                ><br />
+                <span class="timings">End Time : {{ day.data.formatedEndTime }}</span><br />
                 <span class="timings">Total : {{ day.data.totalTiming }}</span>
               </div>
               <div *ngIf="day.leave" class="day_tooltip">
@@ -79,6 +65,36 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="calender_legend">
+      <h2>Color Legend for Calendar</h2>
+      <ul>
+        <li>
+          <div class="color_box sundayClass"></div>
+          <div class="color_info">Sunday</div>
+        </li>
+        <li>
+          <div class="color_box presentClass"></div>
+          <div class="color_info">Employee present that day</div>
+        </li>
+        <li>
+          <div class="color_box applied_leaveClass"></div>
+          <div class="color_info">Applied for leave on this day and avaiting for approval</div>
+        </li>
+        <li>
+          <div class="color_box unapproved_leaveClass"></div>
+          <div class="color_info">Unapproved leave</div>
+        </li>
+        <li>
+          <div class="color_box paid_leaveClass"></div>
+          <div class="color_info">Paid leave</div>
+        </li>
+        <li>
+          <div class="color_box unpaid_leaveClass"></div>
+          <div class="color_info">Unpaid leave</div>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

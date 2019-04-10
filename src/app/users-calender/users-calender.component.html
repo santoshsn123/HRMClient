@@ -6,7 +6,7 @@
           <li class="list-group-item employee_list-title">
             <h4>Employees</h4>
           </li>
-          <li class="list-group-item employee_list-title">
+          <li class="list-group-item employee_list-search">
             <input
               type="text"
               name="searchName"
@@ -31,8 +31,10 @@
                 class="img-circle"
                 alt=""
               />
-              {{ emp.firstName + " " + emp.lastName }} <br />
-              <span class="roleClass">{{ emp.role }}</span>
+              <div class='empText'>
+                {{ emp.firstName + " " + emp.lastName }}
+                <span class="roleClass">{{ emp.role }}</span>
+              </div>
             </a>
           </li>
           <!-- <li class="list-group-item">Second item</li>

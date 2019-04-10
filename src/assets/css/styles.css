@@ -1613,6 +1613,9 @@ table tbody tr:first-child td{
   border: none;
   font-weight: 500;
 }
+form table tbody tr:first-child td{
+  font-weight: normal;
+}
 .profile-table table tbody tr:first-child td{
   font-weight: normal;
 }
