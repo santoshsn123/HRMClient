@@ -36,6 +36,7 @@ export class UsersComponent implements OnInit {
   activestatus = "";
   loading: boolean = true;
   noUsers;
+  searchName;
   @Input() dashboardData: string;
 
   constructor(
