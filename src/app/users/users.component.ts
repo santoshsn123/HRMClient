@@ -200,7 +200,8 @@ export class DialogOverviewExampleDialog {
       email: ["", [Validators.required, Validators.email]],
       firstName: ["", [Validators.required]],
       lastName: ["", [Validators.required]],
-      salary: [""]
+      salary: [""],
+      role: [""]
     });
 
     //Fetch data to display in form to update
@@ -208,13 +209,14 @@ export class DialogOverviewExampleDialog {
       this.loading = true;
       this.user.getSingleUser(this.data.uuid).subscribe(FetchedUser => {
         this.loading = false;
-        console.log("FetchedUser : -  ", FetchedUser);
+        // console.log("FetchedUser : -  ", FetchedUser);
         this.FetchedUser = FetchedUser;
         this.registerForm.patchValue({
           email: this.FetchedUser.email,
           firstName: this.FetchedUser.firstName,
           lastName: this.FetchedUser.lastName,
-          salary: this.FetchedUser.salary
+          salary: this.FetchedUser.salary,
+          role: this.FetchedUser.role
         });
       });
       //   this.FetchedUser = FetchedUser;

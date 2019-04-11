@@ -90,10 +90,14 @@ export class FilterACHTransfer implements PipeTransform {
   transform(items: any[], searchText): any[] {
     if (!items) return [];
     if (!searchText.name) return items;
+    items.map(item => {
+      return (item.role = item.role ? item.role : "");
+    });
     searchText.name = searchText.name.toLowerCase();
     let item = items.filter(it => {
       return it.firstName.toLowerCase().includes(searchText.name) ||
-        it.lastName.toLowerCase().includes(searchText.name)
+        it.lastName.toLowerCase().includes(searchText.name) ||
+        it.role.toLowerCase().includes(searchText.name)
         ? it
         : null;
     });

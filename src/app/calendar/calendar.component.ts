@@ -22,7 +22,7 @@ export class CalendarComponent implements OnInit {
   userData;
   isLoading: boolean = false;
   noOfLeaves: number = 0;
-
+  userLeaves;
   @Input() calenderUserId: string;
   @Output() monthChange = new EventEmitter();
   constructor(
@@ -65,9 +65,12 @@ export class CalendarComponent implements OnInit {
         this.predefinedLeaves = predefinedLeaves;
         this.user.getSingleUser(userId).subscribe(
           userData => {
-            this.userData = userData;
-            this.showAccordingToDate();
-            this.isLoading = false;
+            this.leave.getoneUserLeaves(userId).subscribe(userLeaves => {
+              this.userLeaves = userLeaves;
+              this.userData = userData;
+              this.showAccordingToDate();
+              this.isLoading = false;
+            });
           },
           erro => {
             this.isLoading = false;
@@ -141,6 +144,24 @@ export class CalendarComponent implements OnInit {
         ) {
           day.leave = true;
           day.leaveReason = leave.reason;
+        }
+      });
+      this.userLeaves.map(userleaves => {
+        if (
+          this.getFormatedDate(userleaves.leaveDate, "") ==
+          this.getFormatedDate(this.date, day.day)
+        ) {
+          // day.leave = true;
+          if (userleaves.status == 0) {
+            day.appliedLeave = true;
+          }
+          if (userleaves.status == 1) {
+            day.approvedLeave = true;
+          }
+          if (userleaves.status == 1) {
+            day.rejectedLeave = true;
+          }
+          day.leaveReason = userleaves.reason;
         }
       });
     });

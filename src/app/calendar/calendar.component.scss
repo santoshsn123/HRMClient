@@ -92,7 +92,11 @@
   margin-top: 50px;
 }
 .leaveClass,
-.notifyClass,
+.notifyClass {
+  background-color: #05563c !important;
+  color: #fff;
+}
+
 .applied_leaveClass {
   background-color: #fcb03b !important;
   color: #fff;
@@ -112,6 +116,10 @@
 }
 .unapproved_leaveClass {
   background-color: #7a0a0a;
+  color: #fff;
+}
+.approved_leaveClass {
+  background-color: #cf1c82;
   color: #fff;
 }
 .paid_leaveClass {
