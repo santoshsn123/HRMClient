@@ -12,6 +12,11 @@ git commit -m "Message"
 git push origin (Branch Name)  //For Now Branch Name is feature/nareshWork
 
 
+git checkout nareshWork3
+git fetch
+git pull origin nareshWork3
+
+
 addons--
 
 gender

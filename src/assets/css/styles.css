@@ -1133,6 +1133,7 @@ a.label:focus {
   display: none;
   box-shadow: none;
   background: #fff;
+  transition: all 0.3s;
 }
 
 .sidebar ul {
@@ -1532,6 +1533,9 @@ line-height: 0;
 margin: 13px 0;
 cursor: pointer;
 }
+.sidebar_toggle:hover{
+  background-color: rgba(256,256,256,0.1);
+}
 .header_logo{     padding: 8px;
   display: block;
   margin-bottom: 20px;
@@ -1555,12 +1559,20 @@ cursor: pointer;
   left: auto;
   right: 0;
   top: 0;
+  transition: all 0.3s;
+}
+.navbar-custom.active, .main.active{
+  width: 100%;
+}
+.sidebar.active{
+  left: -240px;
 }
 .main{
   width: calc(100% - 240px);
 margin-left: 0;
 float: right;
 padding: 0 30px;
+transition: all 0.3s;
 }
 .main_panel_container {
   border-radius: 0;
@@ -1630,4 +1642,18 @@ form table tbody tr:first-child td{
 }
 .fa-eye{
   color: #3fadd8;
+}
+.sidebar ul.nav li a em{
+  width: 26px;
+}
+
+@media screen and (max-width: 1500px){
+  .main{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 560px){
+  .main{
+    padding: 0 20px;
+  }
 }

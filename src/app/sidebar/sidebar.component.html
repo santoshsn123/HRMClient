@@ -1,4 +1,4 @@
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation" >
   <div class="container-fluid">
     <div class="navbar-header">
       <!-- <button
@@ -12,7 +12,7 @@
         <span class="icon-bar"></span>
       </button> -->
       <!-- (click)="sidebar_toggle($event)" -->
-      <div class="sidebar_toggle">
+      <div class="sidebar_toggle" onclick="toggle_all()">
         <i class="fas fa-bars"></i>
       </div>
 
@@ -157,28 +157,28 @@
   <ul class="nav menu">
     <li routerLinkActive="active">
       <a href="#" routerLink="dashboard">
-        <em class="fa fa-dashboard">&nbsp;</em> Dashboard</a
+        <em class="fa fa-dashboard">&nbsp;</em>Dashboard</a
       >
     </li>
     <!-- routerLink="/user/bob" -->
     <li routerLinkActive="active" *ngIf="currentUser.userType == 'admin'">
       <a href="#" routerLink="users">
-        <em class="fa fa-calendar">&nbsp;</em> Employees</a
+        <em class="fa fa-calendar">&nbsp;</em>Employees</a
       >
     </li>
     <li routerLinkActive="active" *ngIf="currentUser.userType == 'employee'">
       <a href="#" routerLink="profile">
-        <em class="fa fa-bar-chart">&nbsp;</em> Profile</a
+        <em class="fa fa-bar-chart">&nbsp;</em>Profile</a
       >
     </li>
     <li routerLinkActive="active" *ngIf="currentUser.userType == 'employee'">
       <a href="#" routerLink="calender">
-        <em class="fa fa-bar-chart">&nbsp;</em> My Calender</a
+        <em class="fa fa-calendar-alt">&nbsp;</em>My Calender</a
       >
     </li>
     <li routerLinkActive="active" *ngIf="currentUser.userType == 'admin'">
       <a href="#" routerLink="allLeaves">
-        <em class="fa fa-toggle-off">&nbsp;</em> All Leaves</a
+        <em class="fas fa-tasks">&nbsp;</em>All Leaves</a
       >
     </li>
     <li routerLinkActive="active">
@@ -240,7 +240,7 @@
     -->
     <li>
       <a href="javascript:void(0);" (click)="logout()">
-        <em class="fa fa-power-off">&nbsp;</em> Logout</a
+        <em class="fa fa-power-off">&nbsp;</em>Logout</a
       >
     </li>
   </ul>
