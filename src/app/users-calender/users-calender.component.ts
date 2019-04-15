@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UsersComponent } from "../users/users.component";
 import { UsersService } from "../services/users/users.service";
 import { TimingsService } from "../services/timings/timings.service";
+import { DataService } from "../data.service";
 
 @Component({
   selector: "app-users-calender",
@@ -9,15 +10,22 @@ import { TimingsService } from "../services/timings/timings.service";
   styleUrls: ["./users-calender.component.scss"]
 })
 export class UsersCalenderComponent implements OnInit {
-  constructor(private user: UsersService, private timings: TimingsService) {}
+  constructor(
+    private user: UsersService,
+    private timings: TimingsService,
+    private maindata: DataService
+  ) {}
   empList;
   empId;
   workingDays;
   leavesofMonth;
   salaryofMonth;
+  imageShowUrl;
+  searchName;
   ngOnInit() {
     this.getUserlist();
     // this.getWorkingDayOfMonth();
+    this.imageShowUrl = this.maindata.imageShowUrl;
   }
   getUserlist = () => {
     this.user.getUserlist().subscribe(data => {

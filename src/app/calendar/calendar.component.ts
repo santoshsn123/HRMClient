@@ -22,7 +22,7 @@ export class CalendarComponent implements OnInit {
   userData;
   isLoading: boolean = false;
   noOfLeaves: number = 0;
-
+  userLeaves;
   @Input() calenderUserId: string;
   @Output() monthChange = new EventEmitter();
   constructor(
@@ -65,9 +65,12 @@ export class CalendarComponent implements OnInit {
         this.predefinedLeaves = predefinedLeaves;
         this.user.getSingleUser(userId).subscribe(
           userData => {
-            this.userData = userData;
-            this.showAccordingToDate();
-            this.isLoading = false;
+            this.leave.getoneUserLeaves(userId).subscribe(userLeaves => {
+              this.userLeaves = userLeaves;
+              this.userData = userData;
+              this.showAccordingToDate();
+              this.isLoading = false;
+            });
           },
           erro => {
             this.isLoading = false;
@@ -124,7 +127,9 @@ export class CalendarComponent implements OnInit {
           )
         ? true
         : false;
+
       this.monthData.map(data => {
+        //Mapping User Specific Month Data
         if (
           this.getFormatedDate(data.startTime, "") ==
           this.getFormatedDate(this.date, day.day)
@@ -135,6 +140,7 @@ export class CalendarComponent implements OnInit {
         return data;
       });
       this.predefinedLeaves.map(leave => {
+        //Check if Predifined Leave is on the day
         if (
           this.getFormatedDate(leave.leaveDate, "") ==
           this.getFormatedDate(this.date, day.day)
@@ -143,6 +149,31 @@ export class CalendarComponent implements OnInit {
           day.leaveReason = leave.reason;
         }
       });
+      this.userLeaves.map(userleaves => {
+        //Check if user have applied/approved/waiting/rejected leave on the day
+        if (
+          this.getFormatedDate(userleaves.leaveDate, "") ==
+          this.getFormatedDate(this.date, day.day)
+        ) {
+          // day.leave = true;
+          if (userleaves.status == 0) {
+            day.appliedLeave = true;
+          }
+          if (userleaves.status == 1) {
+            day.approvedLeave = true;
+          }
+          if (userleaves.status == 1) {
+            day.rejectedLeave = true;
+          }
+          day.leaveReason = userleaves.reason;
+        }
+      });
+    });
+    let LeaveTakenbyEmpCount = 0;
+    this.monthArray.map(day => {
+      // console.log("Day is here :- ", day);
+      day.empWasOnLeave ? LeaveTakenbyEmpCount++ : "";
+      day.firstLeave = LeaveTakenbyEmpCount == 1 ? true : false;
     });
 
     // this.monthData.map(data => {

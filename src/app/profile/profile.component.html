@@ -45,62 +45,64 @@
       </div>
       <div class="alert bg-success" *ngIf="showsuccessMessage" role="alert">
         <em class="fa fa-lg fa-warning">&nbsp;</em> {{ showsuccessMessage
-        }}<a
-          href="javascript:void(0);"
-          (click)="closeMessage()"
-          class="pull-right"
-          ><em class="fa fa-lg fa-close"></em
-        ></a>
+        }}<a href="javascript:void(0);" (click)="closeMessage()" class="pull-right"><em
+            class="fa fa-lg fa-close"></em></a>
       </div>
       <div class="alert bg-warning" *ngIf="showerrorMessage" role="alert">
         <em class="fa fa-lg fa-warning">&nbsp;</em> {{ showerrorMessage
-        }}<a
-          href="javascript:void(0);"
-          (click)="closeMessage()"
-          class="pull-right"
-          ><em class="fa fa-lg fa-close"></em
-        ></a>
+        }}<a href="javascript:void(0);" (click)="closeMessage()" class="pull-right"><em
+            class="fa fa-lg fa-close"></em></a>
       </div>
-      <div class="panel-body articles-container">
-        <table class="table">
-          <tr>
-            <td>Name</td>
-            <td>{{ profileData.firstName + " " + profileData.lastName }}</td>
-          </tr>
-          <tr>
-            <td>Email</td>
-            <td>{{ profileData.email }}</td>
-          </tr>
-          <tr>
-            <td>Phone</td>
-            <td>{{ profileData.phone }}</td>
-          </tr>
-          <tr>
-            <td>Address</td>
-            <td>{{ profileData.address }}</td>
-          </tr>
-          <tr>
-            <td>Joining Date</td>
-            <td>{{ profileData.createdAt }}</td>
-          </tr>
-          <tr>
-            <td>Age</td>
-            <td>{{ profileData.age }}</td>
-          </tr>
-          <tr>
-            <td>Role</td>
-            <td>{{ profileData.role }}</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="javascript:void(0);" routerLink="../updateProfile"
-                >Edit</a
-              >
-            </td>
-            <td></td>
-          </tr>
-        </table>
-
+      <div class="panel-body articles-container profile-table">
+        <div class="profile_wrap">
+          <div class="profile_wrap-left">
+            <div class="profile_wrap-left-image">
+              <img src="{{
+                  profileData.image
+                    ? imageShowUrl + profileData.image
+                    : '../../assets/img/male_face.jpg'
+                }}" class="profilePic" />
+              <a href="javascript:void(0);" (click)="uploadImage = true">Change Photo</a>
+            </div>
+            <div class="profile_wrap-left-upload-image" *ngIf="uploadImage">
+              <image-upload [max]="1" url="{{ imageUploadUrl }}" (uploadFinished)="onUploadFinished($event)"
+                [partName]="'profilePic'"></image-upload>
+            </div>
+          </div>
+          <div class="profile_wrap-right">
+            <div class="profile_wrap-right-half">
+              <div class="profile_wrap-right-half-name">
+                <h1>{{ profileData.firstName + " " + profileData.lastName }}</h1>
+                <span>{{ profileData.role }}</span>
+              </div>
+              <div class="profile_wrap-right-half-info">
+                <ul>
+                  <li>
+                    <span>Email</span>
+                    <p>{{ profileData.email }}</p>
+                  </li>
+                  <li>
+                    <span>Phone</span>
+                    <p>{{ profileData.phone }}</p>
+                  </li>
+                  <li>
+                    <span>Joining Date</span>
+                    <p>{{ profileData.createdAt }}</p>
+                  </li>
+                  <li>
+                    <span>Age</span>
+                    <p>{{ profileData.age }}</p>
+                  </li>
+                  <li>
+                    <span>Address</span>
+                    <p>{{ profileData.address }}</p>
+                  </li>
+                </ul>
+                <a class="btn btn-primary" href="javascript:void(0);" routerLink="../updateProfile">Edit</a>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="loading_position">
           <i *ngIf="loading" class="fa fa-refresh fa-spin icon_size"></i>
         </div>

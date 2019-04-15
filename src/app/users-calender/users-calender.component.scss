@@ -21,6 +21,14 @@
       color: #fff;
     }
   }
+  &-search {
+    margin: 0 -10px 30px !important;
+    border: none !important;
+    input {
+      height: 40px;
+      border-radius: 0;
+    }
+  }
   img {
     width: 40px;
     height: 40px;
@@ -37,7 +45,7 @@
       border-radius: 0 !important;
     }
     &:first-child {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     &:not(:first-child) {
       border-bottom: 1px solid #eee;
@@ -77,6 +85,17 @@
       display: block;
       padding: 15px 10px;
       color: #333;
+
+      .empText {
+        display: inline-block;
+        position: relative;
+        bottom: 4px;
+
+        span {
+          display: table;
+          color: #02aae8;
+        }
+      }
     }
     a:hover,
     a:active {
@@ -123,4 +142,9 @@
     // font-size: 34px;
     font-size: 22px;
   }
+}
+
+.roleClass {
+  font-size: 10px;
+  color: #8e8c8c;
 }

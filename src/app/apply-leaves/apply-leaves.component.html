@@ -14,10 +14,9 @@
   <div class="col-md-12">
     <div class="panel panel-default articles">
       <div class="panel-heading">
-        <span *ngIf="currentUser.userType == 'employee'" class="panel-heading"
-          >Apply Leaves</span
-        >
-        <span *ngIf="currentUser.userType == 'admin'" class="panel-heading"
+        <span *ngIf="currentUser.userType == 'employee'" class=""
+          >Apply Leaves</span>
+        <span *ngIf="currentUser.userType == 'admin'" class=""
           >Applied Leaves</span
         >
         <ul
@@ -93,12 +92,14 @@
             </td>
             <td *ngIf="currentUser.userType == 'admin'">
               <a
+                class="leave-accept"
                 href="javascript:void(0);"
                 *ngIf="leave.status !== 1"
                 (click)="changeStatus(leave, 'accept')"
                 >Accept </a
               ><span *ngIf="leave.status === 0">/</span>
               <a
+                class="leave-reject"
                 href="javascript:void(0);"
                 *ngIf="leave.status !== 2"
                 (click)="changeStatus(leave, 'reject')"

@@ -13,17 +13,22 @@ export class AppComponent {
   constructor(private router: Router, private userstate: DataService) {
     router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
+        console.log(event.url);
         let currentUser = JSON.parse(localStorage.getItem("user"));
         if (
-          event.url != "/login" &&
-          event.url != "/forgetPassword" &&
+          event.url !== "/login" &&
+          event.url !== "/forgetPassword" &&
           !currentUser &&
           event.url.split("/")[1] !== "empRegisterLink" &&
-          event.url.split("/")[1] !== "forgetPassword"
+          event.url.split("/")[1] !== "forgetPassword" &&
+          event.url.split("/")[1] !== "calenderForApp"
         ) {
+          console.log("in If condition ");
           this.router.navigate(["login"]);
+        } else {
+          console.log("in else condition ");
         }
-
+        this.showSideBar = event.url.split("/")[1] !== "calenderForApp";
         if (event.url == "/login" && currentUser) {
           this.router.navigate(["dashboard"]);
         }

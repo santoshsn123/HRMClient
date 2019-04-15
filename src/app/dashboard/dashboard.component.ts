@@ -15,12 +15,14 @@ export class DashboardComponent implements OnInit {
 
   UserId;
   currentUser;
+  userType;
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user"));
     if (!this.currentUser) {
       this.router.navigate(["login"]);
     } else {
       this.UserId = this.currentUser.userId;
+      this.userType = this.currentUser.userType;
     }
   }
 }

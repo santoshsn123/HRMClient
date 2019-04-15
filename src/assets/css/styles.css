@@ -672,10 +672,10 @@ a.label:focus {
 }
 
 .panel-default .panel-heading {
-  background: #fff;
+  background: #2f353f;
   /* border-bottom: 1px solid #e9ecf2; */
   border: none;
-  color: #444444;
+  color: #ffffff;
   padding: 10px 15px 0 15px;
 }
 
@@ -741,6 +741,8 @@ a.label:focus {
   padding: 0;
   background: none;
   color: #7c7c7c;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 .panel-settings a,
@@ -768,7 +770,7 @@ a.label:focus {
   /* margin: -1px -5px 0 15px !important; */
   border-radius: 4px;
   text-align: center;
-  border: 1px solid #e9ecf2;
+  /* border: 1px solid #e9ecf2; */
   color: #7c7c7c;
   background: #fff;
   width: 42px;
@@ -818,13 +820,13 @@ a.label:focus {
 
 .panel-heading span {
   margin: 0px;
-  font-size: 14px;
+  /* font-size: 14px; */
 }
 
 .panel-button-tab-right {
   margin-left: 4px !important;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  /* border-top-left-radius: 0;
+  border-bottom-left-radius: 0; */
 }
 
 .panel-button-tab-left {
@@ -1516,6 +1518,9 @@ p.back-link {
 
 
 /*------------------- new style -------------------*/
+em.fa-plus{
+  line-height: 2;
+}
 .sidebar_toggle{
   float: left;
 color: #fff;
@@ -1597,4 +1602,32 @@ box-shadow: none;
   float: right;
   z-index: 9;
   position: relative;
+}
+.mat-dialog-title{
+    margin: 0 0 30px;
+}
+.mat-dialog-content table tbody tr td{
+    border: none;
+}
+table tbody tr:first-child td{
+  border: none;
+  font-weight: 500;
+}
+form table tbody tr:first-child td{
+  font-weight: normal;
+}
+.profile-table table tbody tr:first-child td{
+  font-weight: normal;
+}
+.mat-form-field-appearance-legacy .mat-form-field-suffix .mat-datepicker-toggle-default-icon{
+  width: 1.66em;
+}
+.fa-trash, .leave-reject, .leave-reject:hover{
+  color: #ff3030;
+}
+.fa-pencil-square, .leave-accept, .leave-accept:hover{
+  color: #27d19b;
+}
+.fa-eye{
+  color: #3fadd8;
 }

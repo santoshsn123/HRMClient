@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { UsersService } from "../services/users/users.service";
+import { DataService } from "../data.service";
 
 @Component({
   selector: "app-profile",
@@ -13,12 +14,18 @@ export class ProfileComponent implements OnInit {
   showsuccessMessage;
   showerrorMessage;
   loading: boolean = false;
-  constructor(private user: UsersService) {}
+  imageUploadUrl;
+  imageShowUrl;
+  uploadImage: boolean = false;
+  constructor(private user: UsersService, private mainData: DataService) {}
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user"));
     this.UserId = this.currentUser.userId;
     this.getprofiledata();
+
+    this.imageUploadUrl = this.mainData.imageUploadUrl + this.UserId;
+    this.imageShowUrl = this.mainData.imageShowUrl;
   }
 
   getprofiledata = () => {
@@ -39,5 +46,10 @@ export class ProfileComponent implements OnInit {
     newmonth = month < 10 ? "0" + month : month;
     newdate = dateinit < 10 ? "0" + dateinit : dateinit;
     return dt.getFullYear() + "-" + newmonth + "-" + newdate;
+  };
+  onUploadFinished = event => {
+    // console.log(event);
+    this.getprofiledata();
+    this.uploadImage = false;
   };
 }

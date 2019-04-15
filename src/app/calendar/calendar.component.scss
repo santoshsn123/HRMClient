@@ -20,9 +20,9 @@
   .calender_controls:hover {
     color: #729ab9;
   }
-  .sundayClass {
-    background-color: #ff002466;
-  }
+  // .sundayClass {
+  //   background-color: #ff002466;
+  // }
   .panel-body {
     padding: 15px 0 0;
   }
@@ -93,20 +93,42 @@
 }
 .leaveClass,
 .notifyClass {
+  background-color: #05563c !important;
+  color: #fff;
+}
+
+.applied_leaveClass {
   background-color: #fcb03b !important;
   color: #fff;
 }
 
 .sundayClass {
-  background-color: #aaaaaa !important;
+  background-color: #aaaaaa;
+  color: #fff;
+}
+.absentClass {
+  background-color: #db4b4be6;
   color: #fff;
 }
 .presentClass {
   background-color: #21b95eb3;
   color: #fff;
 }
-.absentClass {
-  background-color: #db4b4be6;
+
+.unapproved_leaveClass {
+  background-color: #7a0a0a;
+  color: #fff;
+}
+.approved_leaveClass {
+  background-color: #cf1c82;
+  color: #fff;
+}
+.paid_leaveClass {
+  background-color: #fce53b;
+  color: #fff;
+}
+.unpaid_leaveClass {
+  background-color: #4081e3;
   color: #fff;
 }
 
@@ -120,4 +142,37 @@
 .icon_pos {
   margin-top: 36%;
   margin-left: 50%;
+}
+.calender_legend {
+  background-color: #fff;
+  padding: 15px;
+  width: 100%;
+  float: left;
+  h2 {
+    margin: 0;
+    width: 100%;
+    font-size: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  ul {
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    float: left;
+    margin: 10px;
+
+    .color_box {
+      width: 30px;
+      height: 20px;
+      float: left;
+      margin-right: 5px;
+    }
+    .color_info {
+      float: left;
+      display: block;
+    }
+  }
 }

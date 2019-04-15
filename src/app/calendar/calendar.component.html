@@ -42,8 +42,13 @@
               [ngClass]="{
                 presentClass: day.data,
                 leaveClass: day.leave,
-                absentClass: day.empWasOnLeave,
-                sundayClass: (preBlanks.length + day.day - 1) % 7 == 0
+                absentClass:
+                  day.empWasOnLeave &&
+                  (preBlanks.length + day.day - 1) % 7 !== 0,
+                sundayClass: (preBlanks.length + day.day - 1) % 7 == 0,
+                applied_leaveClass: day.appliedLeave,
+                approved_leaveClass: day.approvedLeave,
+                paid_leaveClass: day.firstLeave
               }"
             >
               <div class="showday">
@@ -70,7 +75,15 @@
                 ><br />
                 <span class="timings">Total : {{ day.data.totalTiming }}</span>
               </div>
-              <div *ngIf="day.leave" class="day_tooltip">
+              <div
+                *ngIf="
+                  day.leave ||
+                  day.appliedLeave ||
+                  day.approvedLeave ||
+                  day.rejectedLeave
+                "
+                class="day_tooltip"
+              >
                 <span class="timings">{{ day.leaveReason }}</span>
               </div>
               <!-- <span *ngIf="day.leave">leave Day</span> -->
@@ -79,6 +92,46 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="calender_legend">
+      <h2>Color Legend for Calendar</h2>
+      <ul>
+        <li>
+          <div class="color_box sundayClass"></div>
+          <div class="color_info">Sunday</div>
+        </li>
+        <li>
+          <div class="color_box presentClass"></div>
+          <div class="color_info">Employee present that day</div>
+        </li>
+        <li>
+          <div class="color_box leaveClass"></div>
+          <div class="color_info">Holiday</div>
+        </li>
+        <li>
+          <div class="color_box applied_leaveClass"></div>
+          <div class="color_info">
+            Applied for leave on this day and avaiting for approval
+          </div>
+        </li>
+        <li>
+          <div class="color_box unapproved_leaveClass"></div>
+          <div class="color_info">Unapproved leave</div>
+        </li>
+        <li>
+          <div class="color_box approved_leaveClass"></div>
+          <div class="color_info">Approved leave</div>
+        </li>
+        <li>
+          <div class="color_box paid_leaveClass"></div>
+          <div class="color_info">Paid leave</div>
+        </li>
+        <li>
+          <div class="color_box absentClass"></div>
+          <div class="color_info">Unpaid leave</div>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
