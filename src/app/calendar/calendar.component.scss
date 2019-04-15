@@ -20,9 +20,9 @@
   .calender_controls:hover {
     color: #729ab9;
   }
-  .sundayClass {
-    background-color: #ff002466;
-  }
+  // .sundayClass {
+  //   background-color: #ff002466;
+  // }
   .panel-body {
     padding: 15px 0 0;
   }
@@ -103,17 +103,18 @@
 }
 
 .sundayClass {
-  background-color: #aaaaaa !important;
-  color: #fff;
-}
-.presentClass {
-  background-color: #21b95eb3;
+  background-color: #aaaaaa;
   color: #fff;
 }
 .absentClass {
   background-color: #db4b4be6;
   color: #fff;
 }
+.presentClass {
+  background-color: #21b95eb3;
+  color: #fff;
+}
+
 .unapproved_leaveClass {
   background-color: #7a0a0a;
   color: #fff;

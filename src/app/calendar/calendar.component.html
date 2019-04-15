@@ -42,10 +42,13 @@
               [ngClass]="{
                 presentClass: day.data,
                 leaveClass: day.leave,
-                absentClass: day.empWasOnLeave,
+                absentClass:
+                  day.empWasOnLeave &&
+                  (preBlanks.length + day.day - 1) % 7 !== 0,
                 sundayClass: (preBlanks.length + day.day - 1) % 7 == 0,
                 applied_leaveClass: day.appliedLeave,
-                approved_leaveClass: day.approvedLeave
+                approved_leaveClass: day.approvedLeave,
+                paid_leaveClass: day.firstLeave
               }"
             >
               <div class="showday">
@@ -125,7 +128,7 @@
           <div class="color_info">Paid leave</div>
         </li>
         <li>
-          <div class="color_box unpaid_leaveClass"></div>
+          <div class="color_box absentClass"></div>
           <div class="color_info">Unpaid leave</div>
         </li>
       </ul>

@@ -127,7 +127,9 @@ export class CalendarComponent implements OnInit {
           )
         ? true
         : false;
+
       this.monthData.map(data => {
+        //Mapping User Specific Month Data
         if (
           this.getFormatedDate(data.startTime, "") ==
           this.getFormatedDate(this.date, day.day)
@@ -138,6 +140,7 @@ export class CalendarComponent implements OnInit {
         return data;
       });
       this.predefinedLeaves.map(leave => {
+        //Check if Predifined Leave is on the day
         if (
           this.getFormatedDate(leave.leaveDate, "") ==
           this.getFormatedDate(this.date, day.day)
@@ -147,6 +150,7 @@ export class CalendarComponent implements OnInit {
         }
       });
       this.userLeaves.map(userleaves => {
+        //Check if user have applied/approved/waiting/rejected leave on the day
         if (
           this.getFormatedDate(userleaves.leaveDate, "") ==
           this.getFormatedDate(this.date, day.day)
@@ -164,6 +168,12 @@ export class CalendarComponent implements OnInit {
           day.leaveReason = userleaves.reason;
         }
       });
+    });
+    let LeaveTakenbyEmpCount = 0;
+    this.monthArray.map(day => {
+      // console.log("Day is here :- ", day);
+      day.empWasOnLeave ? LeaveTakenbyEmpCount++ : "";
+      day.firstLeave = LeaveTakenbyEmpCount == 1 ? true : false;
     });
 
     // this.monthData.map(data => {
