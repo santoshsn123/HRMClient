@@ -1,4 +1,7 @@
-<app-punching *ngIf="currentUser.userType == 'employee'"></app-punching>
+<app-punching
+  (valueChange)="checkIfCHanged($event)"
+  *ngIf="currentUser.userType == 'employee'"
+></app-punching>
 
 <div class="">
   <app-calendar

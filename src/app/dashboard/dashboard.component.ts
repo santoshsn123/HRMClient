@@ -25,4 +25,10 @@ export class DashboardComponent implements OnInit {
       this.userType = this.currentUser.userType;
     }
   }
+  checkIfCHanged = event => {
+    this.UserId = "";
+    setTimeout(() => {
+      this.UserId = event;
+    }, 10);
+  };
 }

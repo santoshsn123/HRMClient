@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { TimingsService } from "../services/timings/timings.service";
 
 @Component({
@@ -13,6 +13,7 @@ export class PunchingComponent implements OnInit {
   punchOutStat: boolean = false;
   status;
   UserId;
+  @Output() valueChange = new EventEmitter();
   constructor(private timings: TimingsService) {
     setInterval(() => {
       const today = new Date();
@@ -27,7 +28,6 @@ export class PunchingComponent implements OnInit {
   }
 
   getPunchStat = () => {
-    console.log("Before");
     this.timings.getPunchStat(this.currentUser.userId).subscribe(data => {
       console.log(data);
       this.status = data;
@@ -36,15 +36,15 @@ export class PunchingComponent implements OnInit {
     });
   };
   punchIn = () => {
+    this.valueChange.emit(this.currentUser.userId);
     this.timings.punchIn(this.currentUser.userId).subscribe(data => {
-      console.log(data);
       this.getPunchStat();
     });
   };
 
   punchOut = () => {
+    this.valueChange.emit(this.currentUser.userId);
     this.timings.punchOut(this.currentUser.userId).subscribe(data => {
-      console.log(data);
       this.getPunchStat();
     });
   };

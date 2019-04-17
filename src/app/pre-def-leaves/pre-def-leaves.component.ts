@@ -121,7 +121,8 @@ export class DialogLeaves {
     this.registerForm = this.formBuilder.group({
       // email: ["", [Validators.required, Validators.email]],
       leaveDate: ["", [Validators.required]],
-      reason: ["", [Validators.required]]
+      reason: ["", [Validators.required]],
+      notify: [""]
     });
 
     //Fetch data to display in form to update
@@ -131,7 +132,8 @@ export class DialogLeaves {
         console.log(FetchedUser);
         this.registerForm.patchValue({
           leaveDate: this.FetchedUser.leaveDate,
-          reason: this.FetchedUser.reason
+          reason: this.FetchedUser.reason,
+          notify: this.FetchedUser.notify
         });
       });
     }

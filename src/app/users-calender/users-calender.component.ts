@@ -22,6 +22,7 @@ export class UsersCalenderComponent implements OnInit {
   salaryofMonth;
   imageShowUrl;
   searchName;
+  interval;
   ngOnInit() {
     this.getUserlist();
     // this.getWorkingDayOfMonth();
@@ -32,13 +33,21 @@ export class UsersCalenderComponent implements OnInit {
       // console.log(data);
       this.empList = data;
       if (this.empList) {
-        this.empId = this.empList[0].id;
+        // this.empId = this.empList[0].id;
+        this.setEmployee(this.empList[0].id);
       }
     });
   };
 
   setEmployee = id => {
+    clearInterval(this.interval);
     this.empId = id;
+    this.interval = setInterval(() => {
+      this.empId = "";
+      setTimeout(() => {
+        this.empId = id;
+      }, 10);
+    }, 300000);
   };
   // getWorkingDayOfMonth = () => {
   //   this.timings.getWorkingDaysOfMonth(this.date).subscribe(workingDays => {

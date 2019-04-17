@@ -46,6 +46,7 @@ export class CalendarComponent implements OnInit {
     ];
   }
   ngOnChanges() {
+    console.log("Check if this is changed");
     this.createCalendar();
   }
   ngOnInit() {
