@@ -161,22 +161,22 @@
       >
     </li>
     <!-- routerLink="/user/bob" -->
-    <li routerLinkActive="active" *ngIf="currentUser.userType == 'admin'">
+    <li routerLinkActive="active" *ngIf="userType == 'admin'">
       <a href="#" routerLink="users">
         <em class="fa fa-calendar">&nbsp;</em>Employees</a
       >
     </li>
-    <li routerLinkActive="active" *ngIf="currentUser.userType == 'employee'">
+    <li routerLinkActive="active" *ngIf="userType == 'employee'">
       <a href="#" routerLink="profile">
         <em class="fa fa-bar-chart">&nbsp;</em>Profile</a
       >
     </li>
-    <li routerLinkActive="active" *ngIf="currentUser.userType == 'employee'">
+    <li routerLinkActive="active" *ngIf="userType == 'employee'">
       <a href="#" routerLink="calender">
         <em class="fa fa-calendar-alt">&nbsp;</em>My Calender</a
       >
     </li>
-    <li routerLinkActive="active" *ngIf="currentUser.userType == 'admin'">
+    <li routerLinkActive="active" *ngIf="userType == 'admin'">
       <a href="#" routerLink="allLeaves">
         <em class="fas fa-tasks">&nbsp;</em>All Leaves</a
       >

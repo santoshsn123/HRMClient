@@ -78,6 +78,7 @@ import {
 } from "./apply-leaves/apply-leaves.component";
 import { ForgetPasswordComponent } from "./forget-password/forget-password.component";
 import { ImageUploadModule } from "angular2-image-upload";
+import { CalenderForAppComponent } from './calender-for-app/calender-for-app.component';
 
 @NgModule({
   declarations: [
@@ -114,7 +115,8 @@ import { ImageUploadModule } from "angular2-image-upload";
     UsersCalenderComponent,
     PreDefLeavesComponent,
     ApplyLeavesComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    CalenderForAppComponent
   ],
   imports: [
     BrowserModule,

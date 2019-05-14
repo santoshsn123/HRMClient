@@ -21,6 +21,7 @@ export class UsersCalenderComponent implements OnInit {
   leavesofMonth;
   salaryofMonth;
   imageShowUrl;
+  searchName;
   ngOnInit() {
     this.getUserlist();
     // this.getWorkingDayOfMonth();

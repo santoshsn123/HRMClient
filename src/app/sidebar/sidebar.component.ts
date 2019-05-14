@@ -14,19 +14,20 @@ export class SidebarComponent implements OnInit {
   user;
   userdetails;
   currentUser;
+  userType;
   constructor(
     private router: Router,
     private data: DataService,
     private userData: UsersService
   ) {
-    let user = JSON.parse(localStorage.getItem("user"));
-    if (!user && router.url != "/login") {
-      this.router.navigate(["login"]);
-    }
+    // let user = JSON.parse(localStorage.getItem("user"));
+    // if (!user && router.url != "/login") {
+    //   this.router.navigate(["login"]);
+    // }
 
-    if (user && router.url == "/login") {
-      this.router.navigate([""]);
-    }
+    // if (user && router.url == "/login") {
+    //   this.router.navigate([""]);
+    // }
 
     // this.username = localStorage.getItem("user"); // Check if the Username saved in localstorage
 
@@ -46,6 +47,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user"));
+    this.userType = this.currentUser.userType;
   }
 
   logout() {
