@@ -1,29 +1,23 @@
 <div class="loadingClass" *ngIf="isLoading">
   <i class="fa fa-refresh fa-spin icon_size icon_pos"></i>
 </div>
-<div class="row ">
-  <div class="col-md-12">
+<div class="row calender_component_wrap">
+  <div class="col-md-9">
     <div class="panel panel-default articles calendar_panel_container">
       <div class="panel-body articles-container">
         <div class="">
           <div class="row">
             <div class="col-md-4">
-              <a
-                href="javascript:void(0);"
-                (click)="prevMonth()"
-                class="calender_controls"
-                ><i class="fas fa-angle-left"></i>
+              <a href="javascript:void(0);" (click)="prevMonth()" class="calender_controls"><i
+                  class="fas fa-angle-left"></i>
               </a>
             </div>
             <div class="col-md-4 timeFont">
               {{ months[date.getMonth()] }} - {{ date.getFullYear() }}
             </div>
             <div class="col-md-4" style="text-align: right">
-              <a
-                href="javascript:void(0);"
-                (click)="nextMonth()"
-                class="calender_controls"
-                ><i class="fas fa-angle-right"></i>
+              <a href="javascript:void(0);" (click)="nextMonth()" class="calender_controls"><i
+                  class="fas fa-angle-right"></i>
               </a>
             </div>
           </div>
@@ -36,10 +30,7 @@
             <div class="calendar-box">Fri</div>
             <div class="calendar-box">Sat</div>
             <div class="calendar-box" *ngFor="let blanks of preBlanks"></div>
-            <div
-              class="calendar-box"
-              *ngFor="let day of monthArray"
-              [ngClass]="{
+            <div class="calendar-box" *ngFor="let day of monthArray" [ngClass]="{
                 presentClass: day.data,
                 leaveClass: day.leave,
                 absentClass:
@@ -49,15 +40,12 @@
                 applied_leaveClass: day.appliedLeave,
                 approved_leaveClass: day.approvedLeave,
                 paid_leaveClass: day.firstLeave
-              }"
-            >
+              }">
               <div class="showday">
                 {{ day.day }}
               </div>
               <div *ngIf="day.data" class="day_tooltip">
-                <span class="timings"
-                  >Start Time : {{ day.data.formatedStartTime }}</span
-                >
+                <span class="timings">Start Time : {{ day.data.formatedStartTime }}</span>
                 <br />
                 <span *ngFor="let sub of day.data.SubTimings; let i = index">
                   <span class="timings">
@@ -70,20 +58,15 @@
                   </span>
                   <br />
                 </span>
-                <span class="timings"
-                  >End Time : {{ day.data.formatedEndTime }}</span
-                ><br />
+                <span class="timings">End Time : {{ day.data.formatedEndTime }}</span><br />
                 <span class="timings">Total : {{ day.data.totalTiming }}</span>
               </div>
-              <div
-                *ngIf="
+              <div *ngIf="
                   day.leave ||
                   day.appliedLeave ||
                   day.approvedLeave ||
                   day.rejectedLeave
-                "
-                class="day_tooltip"
-              >
+                " class="day_tooltip">
                 <span class="timings">{{ day.leaveReason }}</span>
               </div>
               <!-- <span *ngIf="day.leave">leave Day</span> -->
@@ -93,49 +76,69 @@
         </div>
       </div>
     </div>
+  </div>
 
+  <div class="col-md-3">
     <div class="calender_legend">
       <h2>Color Legend for Calendar</h2>
-      <ul>
-        <li>
-          <div class="color_box sundayClass"></div>
-          <div class="color_info">Sunday</div>
-        </li>
-        <li>
-          <div class="color_box presentClass"></div>
-          <div class="color_info">Employee present that day</div>
-        </li>
-        <li>
-          <div class="color_box leaveClass"></div>
-          <div class="color_info">Holiday</div>
-        </li>
-        <li>
-          <div class="color_box applied_leaveClass"></div>
-          <div class="color_info">
-            Applied for leave on this day and avaiting for approval
+      <div class="row calender_legend-container">
+        <div class="col-lg-12 legend-wrap">
+          <div class="legend">
+            <div class="color_box sundayClass"></div>
+            <div class="color_info">Sunday</div>
           </div>
-        </li>
-        <li>
-          <div class="color_box halfday_leaveClass"></div>
-          <div class="color_info">Half day leave</div>
-        </li>
-        <li>
-          <div class="color_box absentClass"></div>
-          <div class="color_info">Unapproved leave</div>
-        </li>
-        <li>
-          <div class="color_box approved_leaveClass"></div>
-          <div class="color_info">Approved leave</div>
-        </li>
-        <li>
-          <div class="color_box paid_leaveClass"></div>
-          <div class="color_info">Approved Paid leave</div>
-        </li>
-        <li>
-          <div class="color_box absentClass"></div>
-          <div class="color_info">Unpaid leave</div>
-        </li>
-      </ul>
+        </div>
+        <div class="col-lg-12 legend-wrap">
+          <div class="legend">
+            <div class="color_box presentClass"></div>
+            <div class="color_info">Employee present that day</div>
+          </div>
+        </div>
+        <div class="col-lg-12 legend-wrap">
+          <div class="legend">
+            <div class="color_box leaveClass"></div>
+            <div class="color_info">Holiday</div>
+          </div>
+        </div>
+        <div class="col-lg-12 legend-wrap">
+          <div class="legend">
+            <div class="color_box applied_leaveClass"></div>
+            <div class="color_info">
+              Waiting for leave approval
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 legend-wrap">
+          <div class="legend">
+            <div class="color_box halfday_leaveClass"></div>
+            <div class="color_info">Half day leave</div>
+          </div>
+        </div>
+        <div class="col-lg-12 legend-wrap">
+          <div class="legend">
+            <div class="color_box absentClass"></div>
+            <div class="color_info">Unapproved leave</div>
+          </div>
+        </div>
+        <div class="col-lg-12 legend-wrap">
+          <div class="legend">
+            <div class="color_box approved_leaveClass"></div>
+            <div class="color_info">Approved leave</div>
+          </div>
+        </div>
+        <div class="col-lg-12 legend-wrap">
+          <div class="legend">
+            <div class="color_box paid_leaveClass"></div>
+            <div class="color_info">Approved Paid leave</div>
+          </div>
+        </div>
+        <div class="col-lg-12 legend-wrap">
+          <div class="legend">
+            <div class="color_box absentClass"></div>
+            <div class="color_info">Unpaid leave</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

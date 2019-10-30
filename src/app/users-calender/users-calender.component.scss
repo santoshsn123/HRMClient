@@ -7,23 +7,30 @@
 .margin-top {
   margin-top: 50px;
 }
+.employe_details_wrap{
+  
+}
 .employee_list {
   // border: 1px solid #eee;
   padding: 0 20px 20px;
   background-color: #fff;
+  height: calc(100vh - 195px);
 
   &-title {
-    margin: 0 -20px;
+    // margin: 0 -20px;
     padding: 10px 15px !important;
     background-color: #1c5383;
     h4 {
       font-weight: 500;
       color: #fff;
+      margin: 4px 0;
     }
   }
   &-search {
-    margin: 0 -10px 30px !important;
+    // margin: 0 -10px 30px !important;
     border: none !important;
+    padding: 10px 10px;
+    background-color: #fff;
     input {
       height: 40px;
       border-radius: 0;
@@ -106,7 +113,7 @@
 .emp_total {
   // margin-bottom: 50px;
   &-container {
-    padding: 15px;
+    padding: 10px;
     display: flex;
     align-items: center;
     color: #fff;
@@ -121,12 +128,15 @@
   &-salary {
     background-color: #3cb878;
   }
+  &-hours {
+    background-color: #3c7ab8;
+  }
   &-icon {
-    width: 30%;
-    font-size: 40px;
+    width: 20%;
+    font-size: 34px;
   }
   &-details {
-    width: 70%;
+    width: 80%;
 
     h3 {
       font-size: 14px;

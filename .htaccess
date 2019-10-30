@@ -1,0 +1,4 @@
+Order deny,allow
+Allow from 183.83.163.169
+
+Header set Access-Control-Allow-Origin 'https://hrmearts.herokuapp.com/api'

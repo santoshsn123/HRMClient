@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
 export class DataService {
   dataString: string;
   // baseUrl: string = "http://localhost:9999/api";
-  baseUrl: string = "https://hrmearts.herokuapp.com/api";
+  baseUrl: string = "http://79.143.180.55:9999/api";
   // baseUrl: string = "http://54.245.154.250:3000/api";
   imageUploadUrl;
   imageShowUrl;
