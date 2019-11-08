@@ -17,6 +17,9 @@ git fetch
 git pull origin nareshWork3
 
 
+ng build --prod		// to generate the files for deployment
+
+
 addons--
 
 gender
